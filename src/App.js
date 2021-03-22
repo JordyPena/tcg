@@ -1,6 +1,9 @@
+import Home from './Home';
+import { Route } from 'react-router-dom';
+
 function App() {
   return (
-    <h1>App working</h1>
+    <Route exact path='/' component={Home}/>
   );
 }
 
