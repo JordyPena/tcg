@@ -1,6 +1,10 @@
 export default function Summary({ card }) {
+  console.log(card);
   return (
     <>
+      <div className="card">
+        <img src={card.images.small} alt="pokemon" />
+      </div>
       <div className="summary">
         <div className="title-left">
           <h1>{card.name}</h1>
