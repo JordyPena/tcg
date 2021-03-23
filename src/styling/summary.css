@@ -1,0 +1,10 @@
+.summary {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-left {
+  display: flex;
+  flex-direction: row;
+
+}
