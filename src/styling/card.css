@@ -1,5 +1,5 @@
 .card {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   padding-bottom: 50px;
 }
