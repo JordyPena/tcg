@@ -3,9 +3,8 @@ import "../styling/home.css";
 export default function Home({ cardsData, match }) {
   return (
     <>
-      <div className="row">
-        <div className="left">
-          {console.log(cardsData)}
+      <div className="home-container">
+        <div className="card">
           {cardsData.map((card) => {
             return <Card card={card} match={match} />;
           })}

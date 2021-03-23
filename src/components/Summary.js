@@ -1,119 +1,184 @@
+import "../styling/summary.css";
 export default function Summary({ card }) {
   console.log(card);
   return (
     <>
-      <div className="card">
-        <img src={card.images.small} alt="pokemon" />
-      </div>
-      <div className="summary">
-        <div className="title-left">
-          <h1>{card.name}</h1>
-          <h3>{card.subtypes}</h3>
-        </div>
+      {card && (
+        <div className="summary-container">
+          <div className="row">
+            <img
+              src={card.images.small}
+              alt="pokemon"
+              className="summary-card"
+            />
+            <div className="column">
+              <div className="title">
+                <div className="title-left">
+                  <h1>{card.name}</h1>
+                  <h3 className="stage">Pokemon - {card.subtypes}</h3>
+                </div>
 
-        <div className="title-right">
-          <h3>HP {card.hp}</h3>
-          <span>type logo goes here</span>
-        </div>
-        <hr />
+                <div className="title-right">
+                  <h3 className="hp">HP {card.hp}</h3>
+                  <span>type logo goes here</span>
+                </div>
+              </div>
 
-        <div>
-          <h3>Prices</h3>
-          <a href={card.tcgplayer.url} target="_blank">
-            Buy Now From TCGplayer
-          </a>
-          <h6>Last updated {card.tcgplayer.updatedAt}</h6>
-        </div>
+              <div className="line">
+                <hr />
+              </div>
 
-        <div>
-          {card.tcgplayer.prices.holofoil && (
-            <h5>HOLOFOIL MARKET {card.tcgplayer.prices.holofoil.market}</h5>
-          )}
+              <div className="price-column">
+                <div className="price-top">
+                  <h3>Prices</h3>
+                  <a href={card.tcgplayer.url} target="_blank">
+                    Buy Now From TCGplayer
+                  </a>
+                  <h6>Last updated {card.tcgplayer.updatedAt}</h6>
+                </div>
 
-          {card.tcgplayer.prices.holofoil && (
-            <h5>HOLOFOIL LOW {card.tcgplayer.prices.holofoil.low}</h5>
-          )}
+                <div className="price-row">
+                  {card.tcgplayer.prices.holofoil && (
+                    <div className="price-column">
+                      <h5>HOLOFOIL MARKET</h5>
+                      <h5>{card.tcgplayer.prices.holofoil.market}</h5>
+                    </div>
+                  )}
 
-          {card.tcgplayer.prices.holofoil && (
-            <h5>HOLOFOIL MID {card.tcgplayer.prices.holofoil.mid}</h5>
-          )}
+                  {card.tcgplayer.prices.holofoil && (
+                    <div className="price-column">
+                      <h5>HOLOFOIL LOW </h5>
+                      <h5>{card.tcgplayer.prices.holofoil.low}</h5>
+                    </div>
+                  )}
 
-          {card.tcgplayer.prices.holofoil && (
-            <h5>HOLOFOIL HIGH {card.tcgplayer.prices.holofoil.high}</h5>
-          )}
-        </div>
+                  {card.tcgplayer.prices.holofoil && (
+                    <div className="price-column">
+                      <h5>HOLOFOIL MID </h5>
+                      <h5>{card.tcgplayer.prices.holofoil.mid}</h5>
+                    </div>
+                  )}
 
-        <div>
-          {card.tcgplayer.prices.reverseHolofoil && (
-            <h5>
-              REVERSE HOLOFOIL MARKET{" "}
-              {card.tcgplayer.prices.reverseHolofoil.market}
-            </h5>
-          )}
+                  {card.tcgplayer.prices.holofoil && (
+                    <div className="price-column">
+                      <h5>HOLOFOIL HIGH</h5>
+                      <h5>{card.tcgplayer.prices.holofoil.high}</h5>
+                    </div>
+                  )}
+                </div>
 
-          {card.tcgplayer.prices.reverseHolofoil && (
-            <h5>
-              REVERSE HOLOFOIL LOW {card.tcgplayer.prices.reverseHolofoil.low}
-            </h5>
-          )}
+                <div className="price-row">
+                  {card.tcgplayer.prices.reverseHolofoil && (
+                     <div className="price-column">
+                     <h5> REVERSE HOLOFOIL MARKET</h5>
+                     <h5> {card.tcgplayer.prices.reverseHolofoil.market}</h5>
+                   </div>
+                  )}
 
-          {card.tcgplayer.prices.reverseHolofoil && (
-            <h5>
-              REVERSE HOLOFOIL MID {card.tcgplayer.prices.reverseHolofoil.mid}
-            </h5>
-          )}
+                  {card.tcgplayer.prices.reverseHolofoil && (
+                      <div className="price-column">
+                      <h5> REVERSE HOLOFOIL LOW</h5>
+                      <h5> {card.tcgplayer.prices.reverseHolofoil.low}</h5>
+                    </div>
+                   
+                  )}
 
-          {card.tcgplayer.prices.reverseHolofoil && (
-            <h5>
-              REVERSE HOLOFOIL HIGH {card.tcgplayer.prices.reverseHolofoil.high}
-            </h5>
-          )}
-        </div>
-        <hr />
+                  {card.tcgplayer.prices.reverseHolofoil && (
+                     <div className="price-column">
+                     <h5> REVERSE HOLOFOIL MID</h5>
+                     <h5>{card.tcgplayer.prices.reverseHolofoil.mid}</h5>
+                   </div>
+                   
+                  )}
 
-        <div>
-          <h4>Abilities</h4>
-          {card.abilities && (
-            <div>
-              <h5>{card.abilities[0].name}</h5>
-              <h5>{card.abilities[0].text}</h5>
+                  {card.tcgplayer.prices.reverseHolofoil && (
+                     <div className="price-column">
+                     <h5>  REVERSE HOLOFOIL HIGH</h5>
+                     <h5> {card.tcgplayer.prices.reverseHolofoil.high}</h5>
+                   </div>
+                   
+                  )}
+                </div>
+              </div>
+
+              <div className="line">
+                <hr />
+              </div>
+
+            
+
+              <div className="ability">
+                {card.abilities && (
+                  <div>
+                      <h4>Abilities</h4>
+                    <h5>{card.abilities[0].name}</h5>
+                    <h5>{card.abilities[0].text}</h5>
+                  </div>
+                )}
+              </div>
+
+           
+
+              {card.attacks && (
+                <div>
+                     <h4>Attacks</h4>
+                  <h5>{card.attacks[0].name + " " + card.attacks[0].damage}</h5>
+                  <h5>{card.attacks[0].text}</h5>
+                </div>
+              )}
+
+              {card.attacks[1] && (
+                <div>
+                  <h5>{card.attacks[1].name + " " + card.attacks[1].damage}</h5>
+                  <h5>{card.attacks[1].text}</h5>
+                </div>
+              )}
+
+              <div className="weakness">
+                <div className="weakness-column">
+                  <h4>Weakness</h4>
+                  <h4>{card.weaknesses[0].type + card.weaknesses[0].value}</h4>
+                </div>
+
+                <div className="weakness-column">
+                  {card.resistances && (
+                    <>
+                      <h4>Resistance</h4>
+                      <h4>
+                        {card.resistances[0].type + card.resistances[0].value}
+                      </h4>
+                    </>
+                  )}
+                </div>
+
+                <div className="weakness-column">
+                  <h4>Retreat Cost</h4>
+                  <h4>{card.retreatCost}</h4>
+                </div>
+              </div>
+
+              <div className="rarity">
+                <div className="rarity-column">
+                  <h3>Artist</h3>
+                  <h4>{card.artist}</h4>
+                </div>
+
+                <div className="rarity-column">
+                  <h3>Rarity</h3>
+                  <h4>{card.rarity}</h4>
+                </div>
+
+                <div className="rarity-column">
+                  <h4>Set</h4>
+                  {<img src={card.set.images.logo} alt="logo" />}
+                </div>
+              </div>
+
+              <h3>{card.flavorText}</h3>
             </div>
-          )}
-
-          {card.attacks && (
-            <div>
-              <h5>{card.attacks[0].name + " " + card.attacks[0].damage}</h5>
-              <h5>{card.attacks[0].text}</h5>
-            </div>
-          )}
-
-          {card.attacks[1] && (
-            <div>
-              <h5>{card.attacks[1].name + " " + card.attacks[1].damage}</h5>
-              <h5>{card.attacks[1].text}</h5>
-            </div>
-          )}
-
-          <h4>Weakness {card.weaknesses[0].type + card.weaknesses[0].value}</h4>
-
-          {card.resistances && (
-            <h4>
-              Resistance {card.resistances[0].type + card.resistances[0].value}
-            </h4>
-          )}
-
-          <h4>Retreat Cost {card.retreatCost}</h4>
-
-          <h4>{card.artist}</h4>
-
-          <h4>{card.rarity}</h4>
-
-          <h4>Set</h4>
-          {<img src={card.set.images.logo} alt="logo" />}
-
-          <h5>{card.flavorText}</h5>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }
