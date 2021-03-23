@@ -12,7 +12,6 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setCurrentCards(data.data);
-        console.log("app.js", data.data);
       });
   }, []);
 
