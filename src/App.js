@@ -1,6 +1,7 @@
 import Home from "./components/Home";
 import Nav from "./components/Nav";
 import About from "./components/About";
+import Summary from "./components/Summary";
 import { Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -19,12 +20,27 @@ function App() {
     <>
       <Route path="/" component={Nav} />
 
+      <Route exact path="/about" component={About} />
+
       <Route
         exact
         path="/"
-        render={(props) => <Home cardsData={currentCards} />}
+        render={(props) => (
+          <Home cardsData={currentCards} match={props.match} />
+        )}
       />
-      <Route exact path="/about" component={About} />
+
+      {/* dynamic path names are designated with :  */}
+      <Route
+        path="/card-summary/:id"
+        render={({ match }) => {
+          const item = currentCards.find((card) => {
+            return card.id === match.params.id;
+          });
+          console.log("app.js", item);
+          return <Summary card={item} />;
+        }}
+      />
     </>
   );
 }
