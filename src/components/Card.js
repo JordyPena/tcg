@@ -6,7 +6,7 @@ export default function Card({ card, match }) {
     <>
       <div className="card">
         <Link to={`card-summary/${card.id}`}>
-          <img src={card.images.small} alt="pokemon" />
+          <img src={card.images.small} alt="pokemon" className="card-image"/>
         </Link>
       </div>
     </>
