@@ -31,7 +31,7 @@ export default function Summary({ card }) {
               <div className="price-column">
                 <div className="price-top">
                   <h3>Prices</h3>
-                  <a href={card.tcgplayer.url} target="_blank">
+                  <a href={card.tcgplayer.url} target="_blank" className="buy">
                     Buy Now From TCGplayer
                   </a>
                   <h6>Last updated {card.tcgplayer.updatedAt}</h6>
@@ -41,28 +41,28 @@ export default function Summary({ card }) {
                   {card.tcgplayer.prices.holofoil && (
                     <div className="price-column">
                       <h5>HOLOFOIL MARKET</h5>
-                      <h5>{card.tcgplayer.prices.holofoil.market}</h5>
+                      <h5 className="purple">${card.tcgplayer.prices.holofoil.market}</h5>
                     </div>
                   )}
 
                   {card.tcgplayer.prices.holofoil && (
                     <div className="price-column">
                       <h5>HOLOFOIL LOW </h5>
-                      <h5>{card.tcgplayer.prices.holofoil.low}</h5>
+                      <h5 className="green">${card.tcgplayer.prices.holofoil.low}</h5>
                     </div>
                   )}
 
                   {card.tcgplayer.prices.holofoil && (
                     <div className="price-column">
                       <h5>HOLOFOIL MID </h5>
-                      <h5>{card.tcgplayer.prices.holofoil.mid}</h5>
+                      <h5 className="blue">${card.tcgplayer.prices.holofoil.mid}</h5>
                     </div>
                   )}
 
                   {card.tcgplayer.prices.holofoil && (
                     <div className="price-column">
                       <h5>HOLOFOIL HIGH</h5>
-                      <h5>{card.tcgplayer.prices.holofoil.high}</h5>
+                      <h5 className="red">${card.tcgplayer.prices.holofoil.high}</h5>
                     </div>
                   )}
                 </div>
@@ -70,31 +70,31 @@ export default function Summary({ card }) {
                 <div className="price-row">
                   {card.tcgplayer.prices.reverseHolofoil && (
                      <div className="price-column">
-                     <h5> REVERSE HOLOFOIL MARKET</h5>
-                     <h5> {card.tcgplayer.prices.reverseHolofoil.market}</h5>
+                     <h5>REVERSE HOLOFOIL MARKET</h5>
+                     <h5 className="purple">${card.tcgplayer.prices.reverseHolofoil.market}</h5>
                    </div>
                   )}
 
                   {card.tcgplayer.prices.reverseHolofoil && (
                       <div className="price-column">
-                      <h5> REVERSE HOLOFOIL LOW</h5>
-                      <h5> {card.tcgplayer.prices.reverseHolofoil.low}</h5>
+                      <h5>REVERSE HOLOFOIL LOW</h5>
+                      <h5 className="green">${card.tcgplayer.prices.reverseHolofoil.low}</h5>
                     </div>
                    
                   )}
 
                   {card.tcgplayer.prices.reverseHolofoil && (
                      <div className="price-column">
-                     <h5> REVERSE HOLOFOIL MID</h5>
-                     <h5>{card.tcgplayer.prices.reverseHolofoil.mid}</h5>
+                     <h5>REVERSE HOLOFOIL MID</h5>
+                     <h5 className="blue">${card.tcgplayer.prices.reverseHolofoil.mid}</h5>
                    </div>
                    
                   )}
 
                   {card.tcgplayer.prices.reverseHolofoil && (
                      <div className="price-column">
-                     <h5>  REVERSE HOLOFOIL HIGH</h5>
-                     <h5> {card.tcgplayer.prices.reverseHolofoil.high}</h5>
+                     <h5>REVERSE HOLOFOIL HIGH</h5>
+                     <h5 className="red">${card.tcgplayer.prices.reverseHolofoil.high}</h5>
                    </div>
                    
                   )}
@@ -170,11 +170,11 @@ export default function Summary({ card }) {
 
                 <div className="rarity-column">
                   <h4>Set</h4>
-                  {<img src={card.set.images.logo} alt="logo" />}
+                  {<img src={card.set.images.logo} alt="logo" className="set-img"/>}
                 </div>
               </div>
 
-              <h3>{card.flavorText}</h3>
+              <h3 className="flavor">{card.flavorText}</h3>
             </div>
           </div>
         </div>
