@@ -111,8 +111,8 @@ export default function Summary({ card }) {
                 {card.abilities && (
                   <div>
                       <h4>Abilities</h4>
-                    <h5>{card.abilities[0].name}</h5>
-                    <h5>{card.abilities[0].text}</h5>
+                    <h3>{card.abilities[0].name}</h3>
+                    <h4>{card.abilities[0].text}</h4>
                   </div>
                 )}
               </div>
@@ -122,8 +122,8 @@ export default function Summary({ card }) {
               {card.attacks && (
                 <div>
                      <h4>Attacks</h4>
-                  <h5>{card.attacks[0].name + " " + card.attacks[0].damage}</h5>
-                  <h5>{card.attacks[0].text}</h5>
+                  <h3>{card.attacks[0].name + " " + card.attacks[0].damage}</h3>
+                  <h4>{card.attacks[0].text}</h4>
                 </div>
               )}
 

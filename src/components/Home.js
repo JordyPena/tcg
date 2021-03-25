@@ -5,9 +5,13 @@ export default function Home({ cardsData, match }) {
     <>
       <div className="home-container">
         <div className="card">
-          {cardsData.map((card) => {
-            return <Card card={card} match={match} />;
-          })}
+          {cardsData && (
+          <>
+            {cardsData.map((card, index) => {
+              return <Card card={card} match={match} key={index} />;
+            })}
+          </>
+          )}
         </div>
       </div>
     </>
