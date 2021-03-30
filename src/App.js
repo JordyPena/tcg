@@ -2,20 +2,24 @@ import Home from "./components/Home";
 import Nav from "./components/Nav";
 import About from "./components/About";
 import Summary from "./components/Summary";
+import Results from "./components/results";
 import { Route } from "react-router-dom";
 import { useState } from "react";
+import { useHistory } from 'react-router-dom';
 
 function App() {
   const [currentCards, setCurrentCards] = useState([]);
   const [userInput, setUserInput] = useState("");
   const [invalidSearch, setInvalidSearch] = useState(false);
+  
+  const history = useHistory();
 
   const formSubmit = (event) => {
     event.preventDefault();
 
-    fetch(`https://api.pokemontcg.io/v2/cards?q=!name:${userInput}`)
+    fetch(`https://api.pokemontcg.io/v2/cards?q=name:${userInput}&pageSize=10`)
       .then((response) => {
-        console.log(response.status)
+        console.log(response.status);
         if (response.status === 400) {
           setInvalidSearch(true);
           throw new Error("Type a valid pokemon name in field");
@@ -29,6 +33,7 @@ function App() {
       .catch((error) => {
         console.error({ error });
       });
+      history.push("/card")
   };
 
   const inputChange = (event) => {
@@ -42,15 +47,28 @@ function App() {
         name="searchBar"
         value={userInput}
         onChange={(event) => inputChange(event)}
+        placeholder="Search for a card"
       />
     </form>
   );
 
-  const invalidEntry = <h5 className="nav-text-red">Type a valid pokemon name in field</h5>
+  const invalidEntry = (
+    <h5 className="nav-text-red">Type a valid pokemon name in field</h5>
+  );
 
   return (
     <>
-      <Route path="/" render={(props) => <Nav searchBar={searchBar} invalidSearch={invalidSearch} invalidEntry={invalidEntry}/>} />
+      <Route
+        path="/"
+        render={(props) => (
+          <Nav
+            renderProps={props}
+            searchBar={searchBar}
+            invalidSearch={invalidSearch}
+            invalidEntry={invalidEntry}
+          />
+        )}
+      />
 
       <Route exact path="/about" component={About} />
 
@@ -58,7 +76,22 @@ function App() {
         exact
         path="/"
         render={(props) => (
-          <Home cardsData={currentCards} match={props.match} />
+          <Home
+          cardsData={currentCards}
+          match={props.match}
+          searchBar={searchBar}
+          />
+        )}
+      />
+
+      <Route
+        exact
+        path="/card"
+        render={(props) => (
+          <Results
+            cardsData={currentCards}
+            match={props.match}
+          />
         )}
       />
 

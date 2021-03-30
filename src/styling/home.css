@@ -1,0 +1,56 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding-bottom: 100px;
+}
+
+.home-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+  z-index: 100;
+  padding: 20px 0px;
+}
+
+.tcg-link {
+  color: blue;
+}
+
+.home-content .card {
+  display: block;
+  position: absolute;
+  width: 80%;
+  max-width: 270px;
+}
+
+.charizard {
+  bottom: -170px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+
+.blastoise {
+  bottom: -140px;
+  margin: 0 auto;
+  left: -310px;
+  right: 0;
+}
+
+.venusaur {
+  bottom: -140px;
+  margin: 0 auto;
+  left: 0;
+  right: -310px;
+}
+
