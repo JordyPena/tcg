@@ -5,31 +5,28 @@ import { FaBars } from 'react-icons/fa';
 import { AiOutlineClose, AiFillHome } from 'react-icons/ai';
 import { BsFillInfoCircleFill } from 'react-icons/bs';
 
-export default function Nav({ searchBar, invalidSearch, invalidEntry, }) {
+export default function Nav({ searchBar, invalidSearch, invalidEntry, renderProps}) {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => {
     setSidebar(!sidebar);
   };
-
+  console.log(renderProps)
   return (
     <>
 
      <div className="navbar">
-        <Link to="#" className="menu-bars" onClick={showSidebar}>
+       {!sidebar ?  <Link to="#" className="menu-bars" onClick={showSidebar}>
           <FaBars  />
-        </Link>
+        </Link> : <Link to="#" className="menu-bars" onClick={showSidebar}>
+              <AiOutlineClose />
+            </Link>}
       </div>
 
       <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
         <ul className="nav-menu-items" >
-          <li className="navbar-toggle" onClick={showSidebar}>
-            <Link to="#" className="menu-bars">
-              <AiOutlineClose />
-            </Link>
-          </li>
-          <li className="nav-text">
-            {searchBar}
+          <li className="searchBar">
+          {renderProps.location.pathname === "/" ? "" : searchBar}
           </li>
           {invalidSearch && (
 
