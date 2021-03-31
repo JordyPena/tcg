@@ -8,12 +8,12 @@ import { useState } from "react";
 import { useHistory } from 'react-router-dom';
 
 function App() {
-  const [currentCards, setCurrentCards] = useState([]);
+  const [cardsData, setCardsData] = useState([]);
   const [userInput, setUserInput] = useState("");
   const [invalidSearch, setInvalidSearch] = useState(false);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(10);
+  const [cardsPerPage] = useState(10);
 
   const history = useHistory();
 
@@ -31,7 +31,7 @@ function App() {
       })
       .then((data) => {
         setInvalidSearch(false);
-        setCurrentCards(data.data);
+        setCardsData(data.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -45,11 +45,12 @@ function App() {
   };
 
   // Get current cards
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = currentCards.slice(indexOfFirstPost, indexOfLastPost);
+  const indexOfLastCard = currentPage * cardsPerPage;
+  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+  const currentCards = cardsData.slice(indexOfFirstCard, indexOfLastCard);
 
   const paginate = (pageNumber) => {
+    window.scrollTo(0, 0);
     setCurrentPage(pageNumber)
   }
 
@@ -90,7 +91,7 @@ function App() {
         path="/"
         render={(props) => (
           <Home
-          cardsData={currentCards}
+          cardsData={cardsData}
           match={props.match}
           searchBar={searchBar}
           />
@@ -102,11 +103,11 @@ function App() {
         path="/card"
         render={(props) => (
           <Results
-            cardsData={currentPosts} //change currentPosts name
+            cardsData={currentCards} 
             match={props.match}
             loading={loading}
-            postsPerPage={postsPerPage}
-            totalPosts={currentCards.length}
+            cardsPerPage={cardsPerPage}
+            totalPosts={cardsData.length}
             paginate={paginate}
           />
         )}
@@ -116,7 +117,7 @@ function App() {
       <Route
         path="/card-summary/:id"
         render={({ match }) => {
-          const item = currentCards.find((card) => {
+          const item = cardsData.find((card) => {
             return card.id === match.params.id;
           });
           console.log("app.js", item);
