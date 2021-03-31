@@ -1,7 +1,7 @@
 import Card from '../components/Card';
 import Pagination from '../components/Pagination';
 
-export default function Result({ cardsData, match, loading, postsPerPage, totalPosts, paginate }) {
+export default function Result({ cardsData, match, loading, cardsPerPage, totalPosts, paginate }) {
   if (loading) {
     return <h2>Loading....</h2>
   }
@@ -16,7 +16,7 @@ export default function Result({ cardsData, match, loading, postsPerPage, totalP
           </>
           )}
         </div>
-       <Pagination postsPerPage={postsPerPage} totalPosts={totalPosts} paginate={paginate}/>
+       <Pagination cardsPerPage={cardsPerPage} totalPosts={totalPosts} paginate={paginate}/>
       </div>
   )
 }
