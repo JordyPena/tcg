@@ -11,7 +11,7 @@ export default function Nav({ searchBar, invalidSearch, invalidEntry, renderProp
   const showSidebar = () => {
     setSidebar(!sidebar);
   };
-  console.log(renderProps)
+  
   return (
     <>
 
