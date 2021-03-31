@@ -1,0 +1,19 @@
+.pages-container {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+.button-styling {
+  display: flex;
+  text-decoration: none;
+  padding: 5px;
+}
+
+.page-number {
+  color: black;
+}
+
+.pages {
+  padding: 5px;
+}

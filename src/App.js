@@ -11,15 +11,18 @@ function App() {
   const [currentCards, setCurrentCards] = useState([]);
   const [userInput, setUserInput] = useState("");
   const [invalidSearch, setInvalidSearch] = useState(false);
-  
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(10);
+
   const history = useHistory();
 
   const formSubmit = (event) => {
     event.preventDefault();
 
-    fetch(`https://api.pokemontcg.io/v2/cards?q=name:${userInput}&pageSize=10`)
+    fetch(`https://api.pokemontcg.io/v2/cards?q=name:${userInput}`)
       .then((response) => {
-        console.log(response.status);
+        setLoading(true);
         if (response.status === 400) {
           setInvalidSearch(true);
           throw new Error("Type a valid pokemon name in field");
@@ -29,6 +32,7 @@ function App() {
       .then((data) => {
         setInvalidSearch(false);
         setCurrentCards(data.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.error({ error });
@@ -39,6 +43,15 @@ function App() {
   const inputChange = (event) => {
     setUserInput(event.target.value);
   };
+
+  // Get current cards
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = currentCards.slice(indexOfFirstPost, indexOfLastPost);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber)
+  }
 
   const searchBar = (
     <form onSubmit={(event) => formSubmit(event)}>
@@ -89,8 +102,12 @@ function App() {
         path="/card"
         render={(props) => (
           <Results
-            cardsData={currentCards}
+            cardsData={currentPosts} //change currentPosts name
             match={props.match}
+            loading={loading}
+            postsPerPage={postsPerPage}
+            totalPosts={currentCards.length}
+            paginate={paginate}
           />
         )}
       />
