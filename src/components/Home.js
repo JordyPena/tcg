@@ -4,10 +4,10 @@ export default function Home({ searchBar }) {
     <main className="home-container">
       <div className="home-content">
         <div>
-          <h1>Pokemon TCG Guru</h1>
-          <h3>A project remake of the Ultimate Card Database</h3>
+          <h1>Pokémon TCG Guru</h1>
+          <h3>A project remake of the Ultimate Pokémon Card Database</h3>
           {searchBar}
-          <p>Search by Pokemon name ie: "blastoise"</p>
+          <p>Search by Pokémon name ie: "blastoise"</p>
         </div>
 
         <a href="http://localhost:3000/card-summary/base1-2">
@@ -38,11 +38,11 @@ export default function Home({ searchBar }) {
       <div className="home-footer">
         <p>All data made available by the</p>
         <a href="https://pokemontcg.io/" className="tcg-link">
-          Pokemon TCG API
+        Pokémon TCG API
         </a>
         <p>
           This website is not produced, endorsed, supported, or affiliated with
-          Nintendo or the Pokemon Company.
+          Nintendo or the Pokémon Company.
         </p>
       </div>
     </main>
