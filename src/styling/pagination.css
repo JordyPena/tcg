@@ -8,6 +8,13 @@
   display: flex;
   text-decoration: none;
   padding: 5px;
+  border-radius: 5px;
+  color: white;
+  border: none;
+}
+
+.button-styling:hover {
+  background-color: rgb(196, 196, 196);
 }
 
 .page-number {

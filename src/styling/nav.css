@@ -19,10 +19,10 @@
   height: 30vh;
   display: flex;
   align-items: flex-start;
-  position: fixed;
+  position: absolute;
   top: 80px;
   left: -100%;
-  transition: 0ms;
+  transition: 0ms;  
   z-index: 999;
 }
 
