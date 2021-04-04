@@ -1,11 +1,13 @@
 .summary-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  padding-top: 20px;
 }
 
 .row {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
 }
 
 .column {
@@ -15,20 +17,22 @@
 }
 
 .summary-card {
-  width: 100%;
+  width: 70%;
   height: 30%;
-  box-shadow: -4px -7px 20px 10px black;
+  box-shadow: 2px 5px 10px 0px black;
 }
 
 .title {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 50px;
 }
 
 .title-left {
   display: flex;
   flex-direction: column;
+  padding-top: 15px;
   align-items: center;
 }
 
@@ -36,10 +40,16 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding-top: 30px;
+  justify-content: center;
 }
 
+.cardName {
+  margin: 0;
+  padding-top: 20px;
+}
 .stage {
-  margin: -22px;
+  margin: 0;
 }
 
 .hp {
