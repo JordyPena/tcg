@@ -29,11 +29,11 @@ export default function Summary({ card }) {
 
               <div className="price-column">
                 <div className="price-top">
-                  <h3>Prices</h3>
+                  <h3 className="prices-header">Prices</h3>
                   <a href={card.tcgplayer.url} target="_blank" className="buy">
-                    Buy Now From TCGplayer
+                    <p>Buy Now From TCGplayer</p>
                   </a>
-                  <h6>Last updated {card.tcgplayer.updatedAt}</h6>
+                  <h6 className="updated-header">Last updated {card.tcgplayer.updatedAt}</h6>
                 </div>
 
                 <div className="price-row">
