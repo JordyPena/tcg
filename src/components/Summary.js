@@ -14,13 +14,12 @@ export default function Summary({ card }) {
             <div className="column">
               <div className="title">
                 <div className="title-left">
-                  <h1>{card.name}</h1>
+                  <h1 className="cardName">{card.name}</h1>
                   <h3 className="stage">Pokemon - {card.subtypes}</h3>
                 </div>
 
                 <div className="title-right">
                   <h3 className="hp">HP {card.hp}</h3>
-                  <span>type logo goes here</span>
                 </div>
               </div>
 

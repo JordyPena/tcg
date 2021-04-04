@@ -115,7 +115,7 @@ function App() {
 
       {/* dynamic path names are designated with :  */}
       <Route
-        path="/card-summary/:id"
+        path="/card/:name/:id"
         render={({ match }) => {
           const item = cardsData.find((card) => {
             return card.id === match.params.id;
