@@ -1,4 +1,5 @@
 import "../styling/summary.css";
+import Footer from "../components/Footer";
 export default function Summary({ card }) {
   console.log(card);
   return (
@@ -113,6 +114,44 @@ export default function Summary({ card }) {
                     </div>
                   )}
                 </div>
+
+                <div className="price-row">
+                  {card.tcgplayer.prices["1stEditionHolofoil"] && (
+                    <div className="price-column">
+                      <h5>1ST EDITION HOLOFOIL MARKET</h5>
+                      <h5 className="purple">
+                        ${card.tcgplayer.prices["1stEditionHolofoil"].market}
+                      </h5>
+                    </div>
+                  )}
+
+                  {card.tcgplayer.prices["1stEditionHolofoil"] && (
+                    <div className="price-column">
+                      <h5>1ST EDITION HOLOFOIL LOW</h5>
+                      <h5 className="green">
+                        ${card.tcgplayer.prices["1stEditionHolofoil"].low}
+                      </h5>
+                    </div>
+                  )}
+
+                  {card.tcgplayer.prices["1stEditionHolofoil"] && (
+                    <div className="price-column">
+                      <h5>1ST EDITION HOLOFOIL MID</h5>
+                      <h5 className="blue">
+                        ${card.tcgplayer.prices["1stEditionHolofoil"].mid}
+                      </h5>
+                    </div>
+                  )}
+
+                  {card.tcgplayer.prices["1stEditionHolofoil"] && (
+                    <div className="price-column">
+                      <h5>1ST EDITION HOLOFOIL HIGH</h5>
+                      <h5 className="red">
+                        ${card.tcgplayer.prices["1stEditionHolofoil"].high}
+                      </h5>
+                    </div>
+                  )}
+                </div>
               </div>
 
               <div className="line">
@@ -214,6 +253,7 @@ export default function Summary({ card }) {
           </div>
         </div>
       )}
+      <Footer/>
     </>
   );
 }
