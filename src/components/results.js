@@ -1,6 +1,6 @@
 import Card from '../components/Card';
 import Pagination from '../components/Pagination';
-
+import Footer from "../components/Footer";
 export default function Result({ cardsData, match, loading, cardsPerPage, totalPosts, paginate }) {
   if (loading) {
     return <h2>Loading....</h2>
@@ -17,6 +17,7 @@ export default function Result({ cardsData, match, loading, cardsPerPage, totalP
           )}
         </div>
        <Pagination cardsPerPage={cardsPerPage} totalPosts={totalPosts} paginate={paginate}/>
+       <Footer/>
       </div>
   )
 }

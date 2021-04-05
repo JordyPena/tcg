@@ -1,7 +1,7 @@
 import "../styling/card.css";
 import { Link } from "react-router-dom";
 
-export default function Card({ card, match }) {
+export default function Card({ card }) {
   return (
     <>
       <div className="card">
