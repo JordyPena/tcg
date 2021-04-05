@@ -117,14 +117,15 @@ export default function Summary({ card }) {
               </div>
 
            
-
-              {card.attacks && (
-                <div>
-                     <h4>Attacks</h4>
-                  <h3>{card.attacks[0].name + " " + card.attacks[0].damage}</h3>
-                  <h4>{card.attacks[0].text}</h4>
-                </div>
-              )}
+              <div className="attacks">
+                {card.attacks && (
+                  <div>
+                      <h4>Attacks</h4>
+                    <h3>{card.attacks[0].name + " " + card.attacks[0].damage}</h3>
+                    <h4>{card.attacks[0].text}</h4>
+                  </div>
+                )}
+              </div>
 
               {card.attacks[1] && (
                 <div>
@@ -135,32 +136,44 @@ export default function Summary({ card }) {
 
               <div className="weakness">
                 <div className="weakness-column">
+                  <div>
+
                   <h4>Weakness</h4>
                   <h4>{card.weaknesses[0].type + card.weaknesses[0].value}</h4>
+                  </div>
+                    <div>
+                      {card.resistances && (
+                        <>
+                          <h4>Resistance</h4>
+                          <h4>
+                            {card.resistances[0].type + card.resistances[0].value}
+                          </h4>
+                        </>
+                      )}
+                    </div>
                 </div>
 
-                <div className="weakness-column">
-                  {card.resistances && (
-                    <>
-                      <h4>Resistance</h4>
-                      <h4>
-                        {card.resistances[0].type + card.resistances[0].value}
-                      </h4>
-                    </>
-                  )}
-                </div>
 
-                <div className="weakness-column">
-                  <h4>Retreat Cost</h4>
-                  <h4>{card.retreatCost}</h4>
+                <div className="weakness-row">
+                  <div>
+
+                    <h4>Retreat Cost</h4>
+                    <h4>colorless</h4>
+                  </div>
+                  
+                  <div>
+
+                    <h3>Artist test</h3>
+                    <h4>{card.artist}</h4>
+                  </div>
                 </div>
               </div>
 
               <div className="rarity">
-                <div className="rarity-column">
+                {/* <div className="rarity-column">
                   <h3>Artist</h3>
                   <h4>{card.artist}</h4>
-                </div>
+                </div> */}
 
                 <div className="rarity-column">
                   <h3>Rarity</h3>
@@ -169,7 +182,7 @@ export default function Summary({ card }) {
 
                 <div className="rarity-column">
                   <h4>Set</h4>
-                  {<img src={card.set.images.logo} alt="logo" className="set-img"/>}
+                  <h5>{card.set.name}</h5>{<img src={card.set.images.logo} alt="logo" className="set-img"/>}
                 </div>
               </div>
 
