@@ -1,9 +1,9 @@
 import React from 'react';
 import "../styling/pagination.css"
-export default function Pagination({ cardsPerPage, totalPosts, paginate }) {
+export default function Pagination({ cardsPerPage, totalCards, paginate }) {
   const pageNumbers = [];
 
-  for (let i=1; i <= Math.ceil(totalPosts / cardsPerPage); i++) {
+  for (let i=1; i <= Math.ceil(totalCards / cardsPerPage); i++) {
     pageNumbers.push(i);
   }
   return (

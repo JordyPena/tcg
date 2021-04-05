@@ -5,10 +5,12 @@ export default function Card({ card }) {
   return (
     <>
       <div className="card">
-        <Link to={`card/${card.name}/${card.id}`}>
+        <Link to={`/card/${card.name}/${card.id}`}>
           <img src={card.images.small} alt="pokemon" className="card-image"/>
         </Link>
       </div>
     </>
   );
 }
+
+
