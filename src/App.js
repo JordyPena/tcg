@@ -1,58 +1,30 @@
 import Home from "./components/Home";
 import Nav from "./components/Nav";
 import About from "./components/About";
-import Summary from "./components/Summary";
 import Results from "./components/results";
+import Summary from "./components/Summary";
 import { Route } from "react-router-dom";
 import { useState } from "react";
 import { useHistory } from 'react-router-dom';
 
 function App() {
-  const [cardsData, setCardsData] = useState([]);
+  
   const [userInput, setUserInput] = useState("");
-  const [invalidSearch, setInvalidSearch] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [cardsPerPage] = useState(10);
+ 
+  
 
   const history = useHistory();
 
   const formSubmit = (event) => {
     event.preventDefault();
-
-    fetch(`https://api.pokemontcg.io/v2/cards?q=name:${userInput}`)
-      .then((response) => {
-        setLoading(true);
-        if (response.status === 400) {
-          setInvalidSearch(true);
-          throw new Error("Type a valid pokemon name in field");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setInvalidSearch(false);
-        setCardsData(data.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error({ error });
-      });
-      history.push("/card")
+      history.push(`/cards/${userInput}/1`)
   };
 
   const inputChange = (event) => {
     setUserInput(event.target.value);
   };
 
-  // Get current cards
-  const indexOfLastCard = currentPage * cardsPerPage;
-  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-  const currentCards = cardsData.slice(indexOfFirstCard, indexOfLastCard);
-
-  const paginate = (pageNumber) => {
-    window.scrollTo(0, 0);
-    setCurrentPage(pageNumber)
-  }
+ 
 
   const searchBar = (
     <form onSubmit={(event) => formSubmit(event)}>
@@ -78,7 +50,6 @@ function App() {
           <Nav
             renderProps={props}
             searchBar={searchBar}
-            invalidSearch={invalidSearch}
             invalidEntry={invalidEntry}
           />
         )}
@@ -91,7 +62,7 @@ function App() {
         path="/"
         render={(props) => (
           <Home
-          cardsData={cardsData}
+         
           match={props.match}
           searchBar={searchBar}
           />
@@ -100,30 +71,20 @@ function App() {
 
       <Route
         exact
-        path="/card"
+        path="/cards/:name/:page"
         render={(props) => (
           <Results
-            cardsData={currentCards} 
             match={props.match}
-            loading={loading}
-            cardsPerPage={cardsPerPage}
-            totalPosts={cardsData.length}
-            paginate={paginate}
           />
         )}
       />
 
-      {/* dynamic path names are designated with :  */}
-      <Route
+       {/* dynamic path names are designated with :  */}
+       <Route
         path="/card/:name/:id"
-        render={({ match }) => {
-          const item = cardsData.find((card) => {
-            return card.id === match.params.id;
-          });
-          console.log("app.js", item);
-          return <Summary card={item} />;
-        }}
-      />
+        component={Summary}
+      /> 
+
     </>
   );
 }

@@ -1,24 +1,25 @@
 import React from 'react';
 import "../styling/pagination.css"
-export default function Pagination({ cardsPerPage, totalPosts, paginate }) {
-  const pageNumbers = [];
-
-  for (let i=1; i <= Math.ceil(totalPosts / cardsPerPage); i++) {
-    pageNumbers.push(i);
-  }
+export default function Pagination({ numberOfPages, paginate, pokemonName }) {
+  
+  console.log(numberOfPages)
+  const pages = new Array(numberOfPages).fill(1)
   return (
     <div className="pages-container">
       {/* get all pages */}
-      {pageNumbers.map((page) => (
-        <li key={page} className="pages">
-          <button className="button-styling" onClick={() => paginate(page)}>
-            <div className="page-number">
+      {pages.map((page, index) => {
+        console.log(page, index)
+        return (
+          <li key={index + 1} className="pages">
+            <button className="button-styling" onClick={() => paginate(index + 1, pokemonName)}>
+              <div className="page-number">
 
-            {page}
-            </div>
-          </button>
-        </li>
-      ))}
+              {index + 1}
+              </div>
+            </button>
+          </li>
+        )}
+      )}
     </div>
   )
 }
