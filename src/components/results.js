@@ -4,19 +4,23 @@ import Footer from "../components/Footer";
 import { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 import Summary from "../components/Summary";
+import { useHistory } from 'react-router-dom';
+
 export default function Result({ match }) {
 
   const [pokemonData, setPokemonData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [cardsPerPage] = useState(10);
   const [loading, setLoading] = useState(false);
   const [invalidSearch, setInvalidSearch] = useState(false);
- 
+  const [ numberOfPages,  setNumberOfPages] = useState(0);
+  
+  const history = useHistory();
+
   useEffect(() => {
 
-    const { name } = match.params
+    const { name, page } = match.params
 
-    const url =`https://api.pokemontcg.io/v2/cards?q=name:${name}`
+    
+    const url =`https://api.pokemontcg.io/v2/cards?q=name:${name}&pageSize=10&page=${page}`
 
     fetch(url)
     .then((response) => {
@@ -28,6 +32,8 @@ export default function Result({ match }) {
       return response.json();
     })
     .then((data) => {
+      setNumberOfPages(Math.ceil(data.totalCount / data.pageSize))
+      console.log("all data",data)
       setInvalidSearch(false);
       setPokemonData(data.data);
       setLoading(false);
@@ -37,29 +43,25 @@ export default function Result({ match }) {
     });
   }, [match]);
 
+  
+
   if (loading) {
     return <h2>Loading....</h2>
   }
   
-   // Get current cards
-  const indexOfLastCard = currentPage * cardsPerPage;
-  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-  const currentCards = pokemonData === "undefined" ? "" : pokemonData.slice(indexOfFirstCard, indexOfLastCard);
-
-  console.log("it works", currentCards)
-
-  const paginate = (pageNumber) => {
+  const paginate = (pageNumber, pokemonName) => {
     window.scrollTo(0, 0);
-    setCurrentPage(pageNumber)
+    history.push(`/cards/${pokemonName}/${pageNumber}`)
   }
 
+  console.log(match)
   return (
     
     <div className="home-container">
         <div className="card">
-          {currentCards && (
+          {Object.keys(pokemonData.length) && (
           <>
-            {currentCards.map((card, index) => {
+            {pokemonData.map((card, index) => {
               return <Card card={card} match={match} key={index} />;
             })}
           </>
@@ -67,7 +69,7 @@ export default function Result({ match }) {
         </div>
         
         
-       <Pagination cardsPerPage={cardsPerPage} totalCards={pokemonData.length} paginate={paginate}/>
+       <Pagination numberOfPages={numberOfPages} paginate={paginate} pokemonName={match.params.name}/>
        <Footer/>
       </div>
   )

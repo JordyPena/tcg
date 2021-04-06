@@ -1,10 +1,37 @@
 import "../styling/summary.css";
 import Footer from "../components/Footer";
-export default function Summary({ card }) {
+import { useEffect, useState } from "react";
+export default function Summary({ match }) {
+  
+  const [card, setCard] = useState({});
   console.log(card);
+
+  useEffect(() => {
+
+    const { id } = match.params
+    console.log("ID", id)
+    fetch(`https://api.pokemontcg.io/v2/cards/${id}`)
+      .then((response) => {
+        if (response.status === 400) {
+          
+          throw new Error("Type a valid pokemon name in field");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("this is data", data)
+        setCard(data.data);
+        
+      })
+      .catch((error) => {
+        console.error({ error });
+      });
+  }, [match])
+
   return (
     <>
-      {card && (
+      {/* checking to see if any values exist in my object */}
+      {Object.keys(card).length && (
         <div className="summary-container">
           <div className="row">
             <img
@@ -218,7 +245,7 @@ export default function Summary({ card }) {
                   </div>
 
                   <div>
-                    <h3>Artist test</h3>
+                    <h3>Artist</h3>
                     <h4>{card.artist}</h4>
                   </div>
                 </div>

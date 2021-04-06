@@ -10,29 +10,14 @@ import { useHistory } from 'react-router-dom';
 function App() {
   
   const [userInput, setUserInput] = useState("");
-  const [cardsData, setCardsData] = useState([]);
+ 
   
 
   const history = useHistory();
 
   const formSubmit = (event) => {
     event.preventDefault();
-      fetch(`https://api.pokemontcg.io/v2/cards?q=name:${userInput}`)
-      .then((response) => {
-        if (response.status === 400) {
-          
-          throw new Error("Type a valid pokemon name in field");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setCardsData(data.data);
-        
-      })
-      .catch((error) => {
-        console.error({ error });
-      });
-      history.push(`/card/${userInput}`)
+      history.push(`/cards/${userInput}/1`)
   };
 
   const inputChange = (event) => {
@@ -86,7 +71,7 @@ function App() {
 
       <Route
         exact
-        path="/card/:name"
+        path="/cards/:name/:page"
         render={(props) => (
           <Results
             match={props.match}
@@ -97,13 +82,7 @@ function App() {
        {/* dynamic path names are designated with :  */}
        <Route
         path="/card/:name/:id"
-        render={({ match }) => {
-          const item = cardsData.find((card) => {
-            return card.id === match.params.id;
-          });
-          console.log("item found", item);
-          return <Summary card={item} />;
-        }}
+        component={Summary}
       /> 
 
     </>
