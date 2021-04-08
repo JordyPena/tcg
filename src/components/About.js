@@ -1,6 +1,8 @@
 
 export default function About() {
   return (
-    <h1>About TCG</h1>
+    <>
+      <h1>About goes here</h1>
+    </>
   )
 }

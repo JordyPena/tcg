@@ -59,7 +59,7 @@ export default function Summary({ match }) {
                 <div className="price-top">
                   <h3 className="prices-header">Prices</h3>
                   <a href={card.tcgplayer.url} target="_blank" className="buy">
-                    <p>Buy Now From TCGplayer</p>
+                    <p className="buy-color">Buy Now From TCGplayer</p>
                   </a>
                   <h6 className="updated-header">
                     Last updated {card.tcgplayer.updatedAt}
