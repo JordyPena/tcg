@@ -4,7 +4,7 @@ import "../styling/nav.css";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose, AiFillHome } from "react-icons/ai";
 import { BsFillInfoCircleFill } from "react-icons/bs";
-
+import Themes from "../components/Themes";
 export default function Nav({
   searchBar,
   invalidSearch,
@@ -57,6 +57,9 @@ export default function Nav({
             <Link to="/about">
               <BsFillInfoCircleFill /> About
             </Link>
+          </li>
+          <li className="nav-text" onClick={showSidebar}>
+            <Themes />
           </li>
         </ul>
       </nav>
