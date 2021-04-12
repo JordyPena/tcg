@@ -71,7 +71,7 @@ function App() {
 
       <Route
         exact
-        path="/cards/:name/:page"
+        path="/cards/:name/:page/:orderBy?/:desc?"
         render={(props) => (
           <Results
             match={props.match}
