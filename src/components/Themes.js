@@ -4,28 +4,44 @@ import { BsMoon } from "react-icons/bs";
 import { BsSun } from "react-icons/bs";
 
 export default function Themes() {
-  const [darkMode, setDarkMode] = useState(false);
+ 
+  const [ theme, setTheme ] = useState(localStorage.getItem("theme") || "light-mode");
+
 
   useEffect(() => {
     const bodyElement = document.body;
-    if (darkMode) bodyElement.classList.add("dark-mode");
-    else bodyElement.classList.remove("dark-mode");
-  }, [darkMode]);
+    if (theme === "dark-mode") bodyElement.classList.add("theme");
+    else bodyElement.classList.remove("theme");
+  }, [theme]);
+
+  const handleThemeButton = () => {
+    console.log(theme)
+    setTheme((prevTheme) => {
+      let newTheme = "dark-mode"
+
+      if (prevTheme === newTheme)
+        newTheme = "light-mode"
+
+      localStorage.setItem("theme", newTheme)
+
+      return newTheme
+    })
+  }
 
   return (
-    <div className={darkMode ? "dark-mode" : "light-mode"}>
+    <div className={theme === "dark-mode" ? "dark-mode" : "light-mode"}>
       <div className="container-themes">
-        {darkMode ? (
+        {theme === "dark-mode" ? (
           <span
-            onClick={() => setDarkMode(false)}
-            style={{ color: !darkMode ? "grey" : "yellow" }}
+            onClick={() => handleThemeButton()}
+            style={{ color: theme !== "dark-mode" ? "grey" : "yellow" }}
           >
             <BsSun />
           </span>
         ) : (
           <span
-            onClick={() => setDarkMode(true)}
-            style={{ color: !darkMode ? "#c96dfd" : "grey" }}
+            onClick={() => handleThemeButton()}
+            style={{ color: theme === "light-mode" ? "#c96dfd" : "grey" }}
           >
             <BsMoon />
           </span>

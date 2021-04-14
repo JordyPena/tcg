@@ -1,4 +1,4 @@
-.dark-mode {
+.theme {
   background-color: #1a1919;
   color: #999;
   height: 100%;
@@ -22,22 +22,22 @@
   align-items: center;
 }
 
-body.dark-mode {
+body.theme {
   background-color: #1a1919;
   color: #999;
   transition: background-color 0.25s ease-in-out;
 }
 
-body.dark-mode p,
-body.dark-mode h1,
-body.dark-mode h2,
-body.dark-mode h3,
-body.dark-mode h4,
-body.dark-mode h5,
-body.dark-mode h6,
-body.dark-mode .navbar,
-body.dark-mode .nav-menu.active,
-body.dark-mode .home-footer {
+body.theme p,
+body.theme h1,
+body.theme h2,
+body.theme h3,
+body.theme h4,
+body.theme h5,
+body.theme h6,
+body.theme .navbar,
+body.theme .nav-menu.active,
+body.theme .home-footer {
   background-color: #1a1919;
   color: #999;
   transition: background-color 0.25s ease-in-out;

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 export default function Summary({ match }) {
   
   const [card, setCard] = useState({});
+  const [loading, setLoading] = useState(false);
   console.log(card);
 
   useEffect(() => {
@@ -12,6 +13,7 @@ export default function Summary({ match }) {
     console.log("ID", id)
     fetch(`https://api.pokemontcg.io/v2/cards/${id}`)
       .then((response) => {
+        setLoading(true);
         if (response.status === 400) {
           
           throw new Error("Type a valid pokemon name in field");
@@ -21,12 +23,16 @@ export default function Summary({ match }) {
       .then((data) => {
         console.log("this is data", data)
         setCard(data.data);
-        
+        setLoading(false);
       })
       .catch((error) => {
         console.error({ error });
       });
   }, [match])
+
+  if (loading) {
+    return <h2>Loading....</h2>
+  }
 
   return (
     <>
