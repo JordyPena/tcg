@@ -1,6 +1,6 @@
 import React from 'react';
 import "../styling/pagination.css"
-export default function Pagination({ numberOfPages, paginate, pokemonName }) {
+export default function Pagination({ numberOfPages, paginate, pokemonName, cardsPerPage, orderCardsBy, ascOrDesc }) {
   
   console.log(numberOfPages)
   const pages = new Array(numberOfPages).fill(1)
@@ -11,7 +11,7 @@ export default function Pagination({ numberOfPages, paginate, pokemonName }) {
         console.log(page, index)
         return (
           <li key={index + 1} className="pages">
-            <button className="button-styling" onClick={() => paginate(index + 1, pokemonName)}>
+            <button className="button-styling" onClick={() => paginate(index + 1, pokemonName, cardsPerPage, orderCardsBy, ascOrDesc)}>
               <div className="page-number">
 
               {index + 1}
