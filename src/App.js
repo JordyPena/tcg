@@ -17,7 +17,7 @@ function App() {
 
   const formSubmit = (event) => {
     event.preventDefault();
-      history.push(`/cards/${userInput}/1`)
+      history.push(`/cards/${userInput}/1/25/rarity/Asc`)
   };
 
   const inputChange = (event) => {
@@ -71,7 +71,7 @@ function App() {
 
       <Route
         exact
-        path="/cards/:name/:page/:orderBy?/:desc?"
+        path="/cards/:name/:page/:pageSize/:orderBy/:desc"
         render={(props) => (
           <Results
             match={props.match}
