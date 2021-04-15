@@ -83,9 +83,9 @@ export default function Result({ match }) {
     return <h2>Loading....</h2>
   }
   
-  const paginate = (pageNumber, pokemonName) => {
+  const paginate = (pageNumber, pokemonName, cardsPerPage, orderCardsBy, ascOrDesc) => {
     window.scrollTo(0, 0);
-    history.push(`/cards/${pokemonName}/${pageNumber}`)
+    history.push(`/cards/${pokemonName}/${pageNumber}/${cardsPerPage}/${orderCardsBy}/${ascOrDesc}`)
   }
   
 // this is for sortBy param
@@ -150,7 +150,10 @@ export default function Result({ match }) {
         </div>
         
         
-       <Pagination numberOfPages={numberOfPages} paginate={paginate} pokemonName={match.params.name}/>
+       <Pagination numberOfPages={numberOfPages} paginate={paginate} pokemonName={match.params.name}
+       cardsPerPage={match.params.pageSize}
+       orderCardsBy={match.params.orderBy}
+       ascOrDesc={match.params.desc} />
        <Footer/>
       </div>
   )
