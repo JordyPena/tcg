@@ -11,7 +11,7 @@ export default function Home({ searchBar }) {
           <p>Search by Pokémon name ie: "blastoise"</p>
         </div>
 
-        <a href="http://localhost:3000/card-summary/base1-2">
+        <a href="http://localhost:3000/card/Blastoise/base1-2">
           <img
             src={`${process.env.PUBLIC_URL}/images/blastoise.png`}
             className="card blastoise"
@@ -19,7 +19,7 @@ export default function Home({ searchBar }) {
           />
         </a>
 
-        <a href="http://localhost:3000/card-summary/base1-15">
+        <a href="http://localhost:3000/card/Venusaur/base1-15">
           <img
             src={`${process.env.PUBLIC_URL}/images/venusaur.png`}
             className="card venusaur"
@@ -27,7 +27,7 @@ export default function Home({ searchBar }) {
           />
         </a>
 
-        <a href="http://localhost:3000/card-summary/base6-3">
+        <a href="http://localhost:3000/card/Charizard/base6-3">
           <img
             src={`${process.env.PUBLIC_URL}/images/charizard.png`}
             className="card charizard"
