@@ -15,10 +15,10 @@ export default function Result({ match }) {
 
   useEffect(() => {
 
-    const { name, page } = match.params
+    const { name, page, pageSize } = match.params
 
     console.log(match.params.orderBy)
-    let url =`https://api.pokemontcg.io/v2/cards?q=name:${name}&pageSize=25&page=${page}`
+    let url =`https://api.pokemontcg.io/v2/cards?q=name:${name}&page=${page}&pageSize=${pageSize || "25"}`
 
     let orderBy;
 
@@ -47,7 +47,7 @@ export default function Result({ match }) {
       if (match.params.desc) {
        
         orderBy = orderBy.split(',').map((eachValue) => {
-          console.log(eachValue)
+        
           return `-${eachValue}`
         })
         orderBy.join('')
@@ -55,7 +55,7 @@ export default function Result({ match }) {
          let orderByParam = `orderBy=${orderBy}`
 
         url = url + "&" + orderByParam
-        console.log('updated url', url)
+    
     }
 
     fetch(url)
@@ -79,8 +79,6 @@ export default function Result({ match }) {
     });
   }, [match]);
 
-  
-
   if (loading) {
     return <h2>Loading....</h2>
   }
@@ -89,22 +87,30 @@ export default function Result({ match }) {
     window.scrollTo(0, 0);
     history.push(`/cards/${pokemonName}/${pageNumber}`)
   }
-
-  const selectedOption = (event) => {
   
-    history.push(`/cards/${match.params.name}/${match.params.page}/${event.target.value}`)
+// this is for sortBy param
+  const selectedOption = (event) => {
+ 
+    history.push(`/cards/${match.params.name}/${match.params.page}/${match.params.pageSize || "25"}/${event.target.value}`)
   }
 
   // pushing to a new path with all my params 
   //if the value of the option is Desc
   const selectedSortOrder = (event) => {
-    let url = `/cards/${match.params.name}/${match.params.page}/${match.params.orderBy}`
+  
+    let url = `/cards/${match.params.name}/${match.params.page}/${match.params.pageSize || "25"}/${match.params.orderBy || "name"}`
     if (event.target.value === "Desc") 
       url += '/Desc'
     history.push(url)   
   }
 
-  console.log(match)
+// this is for pageSize param
+  const selectedPageSize = ({ target }) => {
+   console.log(target.value)
+    let url = `/cards/${match.params.name}/${match.params.page}/${target.value || "25"}/${match.params.orderBy || "name"}/${match.params.desc || "Asc"}`
+    history.push(url)
+    console.log("Problem", url)
+  }
 
   return (
     
@@ -122,6 +128,15 @@ export default function Result({ match }) {
          <select value={match.params.desc || "Asc"} onChange={(event) => selectedSortOrder(event)}>
            <option value="Asc">Asc</option>
            <option value="Desc">Desc</option>
+         </select>
+       </div>
+       <div>
+         <select value={match.params.pageSize || "25"} onChange={(event) => selectedPageSize(event)}>
+           <option value="5">5</option>
+           <option value="10">10</option>
+           <option value="15">15</option>
+           <option value="20">20</option>
+           <option value="25">25</option>
          </select>
        </div>
         <div className="card">
