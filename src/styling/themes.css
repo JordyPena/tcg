@@ -22,10 +22,13 @@
   align-items: center;
 }
 
-body.theme {
+body.theme,
+body.theme .navbar,
+body.theme .nav-menu.active,
+body.theme .home-footer {
   background-color: #1a1919;
   color: #999;
-  transition: background-color 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 
 body.theme p,
@@ -34,11 +37,7 @@ body.theme h2,
 body.theme h3,
 body.theme h4,
 body.theme h5,
-body.theme h6,
-body.theme .navbar,
-body.theme .nav-menu.active,
-body.theme .home-footer {
-  background-color: #1a1919;
+body.theme h6 {
   color: #999;
-  transition: background-color 0.25s ease-in-out;
+  transition: color 0.25s ease-in-out;
 }
