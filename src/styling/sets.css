@@ -1,0 +1,48 @@
+.sets-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.set-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.set-content {
+  padding: 20px;
+  background-color: rgb(64, 64, 107);
+  margin: 10px;
+}
+
+.set-middle {
+  display: flex;
+}
+
+.set-middle-column {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.set-img {
+  width: 100%;
+}
+
+.set-logo {
+  height: auto;
+  width: 100%;
+}
+
+.set-legal {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.figure-logo {
+  margin: 15px;
+  width: 80px;
+  height: 80px;
+}
