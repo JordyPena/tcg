@@ -1,19 +1,23 @@
 import { useState, useEffect } from "react";
 import "../styling/sets.css";
-
-export default function Sets() {
+import Set from "../components/Set";
+import Footer from "../components/Footer";
+export default function Sets({ match }) {
   const [setsData, setSetsData] = useState([]);
+  const [ loading, setLoading ] = useState(false);
   // const [seriesData, setSeriesData] = useState({});
   let url = `https://api.pokemontcg.io/v2/sets?orderBy=set,-releaseDate`;
 
   useEffect(() => {
     fetch(url)
       .then((response) => {
+        setLoading(true)
         if (response.status === 400) throw new Error("Error getting data");
         return response.json();
       })
       .then((data) => {
         setSetsData(data.data);
+        setLoading(false);
         console.log("sets data", data.data[0].series);
       })
       .catch((error) => {
@@ -47,6 +51,11 @@ export default function Sets() {
   }
 
   console.log("this is newSeries", newSeries);
+
+  if (loading) {
+    return <h2>Loading....</h2>;
+  }
+  
   return (
     <div className="sets-container">
       {newSeries.map((set, index) => {
@@ -54,41 +63,15 @@ export default function Sets() {
           <div key={index} className="set-container">
              <p className="set-title">{set.series}</p>
              
-            {set.sets.map((eachSet) => {
+            {set.sets.map((eachSet, index) => {
               return (
-                <div className="set-content">
-                  <figure className="figure-img">
-                    <img
-                      src={eachSet.images.logo}
-                      alt="pokemon-logo"
-                      className="sets-img"
-                    />
-                  </figure>
-                  <div className="set-middle">
-                    <figure className="figure-logo">
-                      <img
-                        src={eachSet.images.symbol}
-                        alt="pokemon-symbol"
-                        className="set-logo"
-                      />
-                    </figure>
-                    <div className="set-middle-column">
-                      <p className="battle">{eachSet.name}</p>
-                      <p className="released">Released {eachSet.releaseDate}</p>
-                    </div>
-                  </div>
-                  <div className="set-legal">
-                    <ul className="legalities-style">
-                      <li>Standard {eachSet.legalities.standard}</li>
-                      <li>Expanded {eachSet.legalities.expanded}</li>
-                    </ul>
-                  </div>
-                </div>
+                <Set eachSet={eachSet} key={index} match={match}/>
               );
             })}
           </div>
         );
       })}
+      <Footer/>
     </div>
   );
 }
