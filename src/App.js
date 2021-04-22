@@ -87,8 +87,11 @@ function App() {
       />
 
       <Route
+        exact
         path="/sets"
-        component={Sets}
+        render={(props) => (
+          <Sets match={props.match}/>
+        )}
       />
 
     </>
