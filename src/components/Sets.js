@@ -18,7 +18,6 @@ export default function Sets({ match }) {
       .then((data) => {
         setSetsData(data.data);
         setLoading(false);
-        console.log("sets data", data.data[0].series);
       })
       .catch((error) => {
         console.error({ error });
