@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
 export default function Set({ eachSet }) {
+ 
   return (
-   
       <div className="set-content">
-         <Link to={`/set/${eachSet.name}/${eachSet.id}`}>
+         <Link to={`/cards/${eachSet.id}/:page/:pageSize/:orderBy/:desc`}>
         <figure className="figure-img">
           <img
             src={eachSet.images.logo}
