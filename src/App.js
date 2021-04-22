@@ -6,6 +6,7 @@ import Summary from "./components/Summary";
 import { Route } from "react-router-dom";
 import { useState } from "react";
 import { useHistory } from 'react-router-dom';
+import Sets from "./components/Sets";
 
 function App() {
   
@@ -83,7 +84,12 @@ function App() {
        <Route
         path="/card/:name/:id"
         component={Summary}
-      /> 
+      />
+
+      <Route
+        path="/sets"
+        component={Sets}
+      />
 
     </>
   );

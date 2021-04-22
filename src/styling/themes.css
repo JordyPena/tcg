@@ -22,10 +22,13 @@
   align-items: center;
 }
 
-body.theme {
+body.theme,
+body.theme .navbar,
+body.theme .nav-menu.active,
+body.theme .home-footer {
   background-color: #1a1919;
   color: #999;
-  transition: background-color 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 
 body.theme p,
@@ -35,10 +38,30 @@ body.theme h3,
 body.theme h4,
 body.theme h5,
 body.theme h6,
-body.theme .navbar,
-body.theme .nav-menu.active,
-body.theme .home-footer {
-  background-color: #1a1919;
+body.theme .menu-bars {
   color: #999;
-  transition: background-color 0.25s ease-in-out;
+  transition: color 0.25s ease-in-out;
+}
+
+body.theme .battle,
+body.theme .legalities-style,
+body.theme .set-title {
+  color:#c9d1d9;
+}
+
+body.theme .released {
+  color: #818a93;
+}
+
+body.theme .set-content {
+  background-color: #252f3f;
+}
+
+body.theme .sets-container {
+  background-color: #1a202c;
+}
+
+body.theme .navbar,
+body.theme .nav-menu.active {
+  background-color: #161b22;
 }
