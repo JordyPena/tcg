@@ -23,6 +23,14 @@
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
 }
 
+.set-content:hover {
+ transform: scale(1.1);
+ vertical-align: middle;
+ transition-duration: .3s;
+ transition-property: transform;
+ margin: 20px;
+}
+
 .set-middle {
   display: flex;
 }
@@ -55,6 +63,7 @@
   align-items: center;
   padding-top: 15px;
   height: 140px;
+  margin: 0;
 }
 
 .figure-logo {
