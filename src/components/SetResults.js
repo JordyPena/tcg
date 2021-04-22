@@ -87,7 +87,7 @@ export default function SetResults({ match }) {
   ) => {
     window.scrollTo(0, 0);
     history.push(
-      `/cards/${pokemonName}/${pageNumber}/${cardsPerPage}/${orderCardsBy}/${ascOrDesc}`
+      `/sets/${pokemonName}/${pageNumber}/${cardsPerPage}/${orderCardsBy}/${ascOrDesc}`
     );
   };
 
@@ -95,11 +95,11 @@ export default function SetResults({ match }) {
   const selectedOption = (event) => {
     if (match.params.page !== "1") {
       history.push(
-        `/cards/${match.params.name}/1/${match.params.pageSize}/${event.target.value}/${match.params.desc}`
+        `/sets/${match.params.id}/1/${match.params.pageSize}/${event.target.value}/${match.params.desc}`
       );
     } else
       history.push(
-        `/cards/${match.params.name}/${match.params.page}/${match.params.pageSize}/${event.target.value}/${match.params.desc}`
+        `/sets/${match.params.id}/${match.params.page}/${match.params.pageSize}/${event.target.value}/${match.params.desc}`
       );
   };
 
@@ -107,7 +107,7 @@ export default function SetResults({ match }) {
   //if the value of the option is Desc
   const selectedSortOrder = (event) => {
     if (match.params.page !== "1") {
-      let url = `/cards/${match.params.name}/1/${match.params.pageSize}/${match.params.orderBy}`;
+      let url = `/sets/${match.params.id}/1/${match.params.pageSize}/${match.params.orderBy}`;
       if (event.target.value === "Desc") {
         url += "/Desc";
         history.push(url);
@@ -116,7 +116,7 @@ export default function SetResults({ match }) {
     } 
     
     else if (match.params.page === "1"){
-      let url = `/cards/${match.params.name}/${match.params.page}/${match.params.pageSize}/${match.params.orderBy}`;
+      let url = `/sets/${match.params.id}/${match.params.page}/${match.params.pageSize}/${match.params.orderBy}`;
       if (event.target.value === "Desc") {
         url +="/Desc"
         history.push(url)
@@ -128,10 +128,10 @@ export default function SetResults({ match }) {
   // this is for pageSize param
   const selectedPageSize = ({ target }) => {
     if (match.params.page !== "1") {
-      let url = `/cards/${match.params.name}/1/${target.value}/${match.params.orderBy}/${match.params.desc}`;
+      let url = `/sets/${match.params.id}/1/${target.value}/${match.params.orderBy}/${match.params.desc}`;
       history.push(url);
     } else {
-      let url = `/cards/${match.params.name}/${match.params.page}/${target.value}/${match.params.orderBy}/${match.params.desc}`;
+      let url = `/sets/${match.params.id}/${match.params.page}/${target.value}/${match.params.orderBy}/${match.params.desc}`;
       history.push(url);
     }
   };
@@ -184,7 +184,7 @@ export default function SetResults({ match }) {
       <Pagination
         numberOfPages={numberOfPages}
         paginate={paginate}
-        pokemonName={match.params.name}
+        pokemonName={match.params.id}
         cardsPerPage={match.params.pageSize}
         orderCardsBy={match.params.orderBy}
         ascOrDesc={match.params.desc}
