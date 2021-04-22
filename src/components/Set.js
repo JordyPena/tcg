@@ -1,10 +1,15 @@
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export default function Set({ eachSet }) {
- 
+  console.log('eachset', eachSet)
+  const history = useHistory();
+
+  const setClicked = () => {
+    history.push(`/sets/${eachSet.id}/1/25/released/Asc`)
+  }
   return (
-      <div className="set-content">
-         <Link to={`/cards/${eachSet.id}/:page/:pageSize/:orderBy/:desc`}>
+      <div className="set-content" onClick={() => setClicked()}>
+         
         <figure className="figure-img">
           <img
             src={eachSet.images.logo}
@@ -31,7 +36,7 @@ export default function Set({ eachSet }) {
             <li>Expanded {eachSet.legalities.expanded}</li>
           </ul>
         </div>
-        </Link>
+       
       </div>
   );
 }
