@@ -7,11 +7,12 @@ import { Route } from "react-router-dom";
 import { useState } from "react";
 import { useHistory } from 'react-router-dom';
 import Sets from "./components/Sets";
+import SetResults from "./components/SetResults";
 
 function App() {
   
   const [userInput, setUserInput] = useState("");
- 
+  
   
 
   const history = useHistory();
@@ -24,8 +25,6 @@ function App() {
   const inputChange = (event) => {
     setUserInput(event.target.value);
   };
-
- 
 
   const searchBar = (
     <form onSubmit={(event) => formSubmit(event)}>
@@ -91,6 +90,16 @@ function App() {
         path="/sets"
         render={(props) => (
           <Sets match={props.match}/>
+        )}
+      />
+
+      <Route
+        exact
+        path="/sets/:id/:page/:pageSize/:orderBy/:desc"
+        render={(props) => (
+          <SetResults
+            match={props.match}
+          />
         )}
       />
 
