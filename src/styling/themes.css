@@ -44,7 +44,8 @@ body.theme .menu-bars {
 }
 
 body.theme .battle,
-body.theme .legalities-style {
+body.theme .legalities-style,
+body.theme .set-title {
   color:#c9d1d9;
 }
 
