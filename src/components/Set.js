@@ -5,7 +5,7 @@ export default function Set({ eachSet }) {
   const history = useHistory();
 
   const setClicked = () => {
-    history.push(`/sets/${eachSet.id}/1/25/released/Asc`)
+    history.push(`/cards/${"set.id:" + eachSet.id}/1/25/released/Asc`)
   }
   return (
       <div className="set-content" onClick={() => setClicked()}>
