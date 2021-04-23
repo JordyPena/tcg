@@ -7,19 +7,18 @@ import { Route } from "react-router-dom";
 import { useState } from "react";
 import { useHistory } from 'react-router-dom';
 import Sets from "./components/Sets";
-import SetResults from "./components/SetResults";
 
 function App() {
   
   const [userInput, setUserInput] = useState("");
   
-  
+  console.log("userInput", userInput)
 
   const history = useHistory();
 
   const formSubmit = (event) => {
     event.preventDefault();
-      history.push(`/cards/${userInput}/1/25/rarity/Asc`)
+      history.push(`/cards/${"name:" + userInput}/1/25/rarity/Asc`)
   };
 
   const inputChange = (event) => {
@@ -71,7 +70,7 @@ function App() {
 
       <Route
         exact
-        path="/cards/:name/:page/:pageSize/:orderBy/:desc"
+        path="/cards/:query/:page/:pageSize/:orderBy/:desc"
         render={(props) => (
           <Results
             match={props.match}
@@ -90,16 +89,6 @@ function App() {
         path="/sets"
         render={(props) => (
           <Sets match={props.match}/>
-        )}
-      />
-
-      <Route
-        exact
-        path="/sets/:id/:page/:pageSize/:orderBy/:desc"
-        render={(props) => (
-          <SetResults
-            match={props.match}
-          />
         )}
       />
 
