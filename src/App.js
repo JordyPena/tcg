@@ -11,21 +11,19 @@ import Sets from "./components/Sets";
 function App() {
   
   const [userInput, setUserInput] = useState("");
- 
   
+  console.log("userInput", userInput)
 
   const history = useHistory();
 
   const formSubmit = (event) => {
     event.preventDefault();
-      history.push(`/cards/${userInput}/1/25/rarity/Asc`)
+      history.push(`/cards/${"name:" + userInput}/1/25/rarity/Asc`)
   };
 
   const inputChange = (event) => {
     setUserInput(event.target.value);
   };
-
- 
 
   const searchBar = (
     <form onSubmit={(event) => formSubmit(event)}>
@@ -72,7 +70,7 @@ function App() {
 
       <Route
         exact
-        path="/cards/:name/:page/:pageSize/:orderBy/:desc"
+        path="/cards/:query/:page/:pageSize/:orderBy/:desc"
         render={(props) => (
           <Results
             match={props.match}

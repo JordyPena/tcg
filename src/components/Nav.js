@@ -27,7 +27,7 @@ export default function Nav({
             className="nav-img"
             alt="pokemon"
           />
-           <h2 className="left-container-text">Pokémon TCG Guru</h2>
+           <p className="left-container-text">Pokémon TCG Guru</p>
         </div>
 
         {!sidebar ? (
