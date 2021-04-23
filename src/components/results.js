@@ -9,14 +9,14 @@ export default function Result({ match }) {
   const [loading, setLoading] = useState(false);
   const [invalidSearch, setInvalidSearch] = useState(false);
   const [numberOfPages, setNumberOfPages] = useState(0);
-
+ 
   const history = useHistory();
 
   useEffect(() => {
-    const { name, page, pageSize, orderBy, desc } = match.params;
+    const { name, query, page, pageSize, orderBy, desc } = match.params;
 
     console.log(match.params);
-    let url = `https://api.pokemontcg.io/v2/cards?q=name:${name}&page=${page}&pageSize=${pageSize}&orderBy=${orderBy}&desc=${desc}`;
+    let url = `https://api.pokemontcg.io/v2/cards?q=${query}&page=${page}&pageSize=${pageSize}&orderBy=${orderBy}&desc=${desc}`;
 
     let orderByText;
 
@@ -95,11 +95,11 @@ export default function Result({ match }) {
   const selectedOption = (event) => {
     if (match.params.page !== "1") {
       history.push(
-        `/cards/${match.params.name}/1/${match.params.pageSize}/${event.target.value}/${match.params.desc}`
+        `/cards/${match.params.query}/1/${match.params.pageSize}/${event.target.value}/${match.params.desc}`
       );
     } else
       history.push(
-        `/cards/${match.params.name}/${match.params.page}/${match.params.pageSize}/${event.target.value}/${match.params.desc}`
+        `/cards/${match.params.query}/${match.params.page}/${match.params.pageSize}/${event.target.value}/${match.params.desc}`
       );
   };
 
@@ -107,7 +107,7 @@ export default function Result({ match }) {
   //if the value of the option is Desc
   const selectedSortOrder = (event) => {
     if (match.params.page !== "1") {
-      let url = `/cards/${match.params.name}/1/${match.params.pageSize}/${match.params.orderBy}`;
+      let url = `/cards/${match.params.query}/1/${match.params.pageSize}/${match.params.orderBy}`;
       if (event.target.value === "Desc") {
         url += "/Desc";
         history.push(url);
@@ -116,7 +116,7 @@ export default function Result({ match }) {
     } 
     
     else if (match.params.page === "1"){
-      let url = `/cards/${match.params.name}/${match.params.page}/${match.params.pageSize}/${match.params.orderBy}`;
+      let url = `/cards/${match.params.query}/${match.params.page}/${match.params.pageSize}/${match.params.orderBy}`;
       if (event.target.value === "Desc") {
         url +="/Desc"
         history.push(url)
@@ -128,18 +128,25 @@ export default function Result({ match }) {
   // this is for pageSize param
   const selectedPageSize = ({ target }) => {
     if (match.params.page !== "1") {
-      let url = `/cards/${match.params.name}/1/${target.value}/${match.params.orderBy}/${match.params.desc}`;
+      let url = `/cards/${match.params.query}/1/${target.value}/${match.params.orderBy}/${match.params.desc}`;
       history.push(url);
     } else {
-      let url = `/cards/${match.params.name}/${match.params.page}/${target.value}/${match.params.orderBy}/${match.params.desc}`;
+      let url = `/cards/${match.params.query}/${match.params.page}/${target.value}/${match.params.orderBy}/${match.params.desc}`;
       history.push(url);
     }
   };
 
+console.log(pokemonData)
+
   return (
     <div className="home-container">
+      {match.params.query.includes("set.id") && (
+      
+     pokemonData[0] && <strong>{pokemonData[0].set.name}, ({pokemonData[0].set.id})</strong>
+      )}
       <div>
         {/* either render value if the orderBy param exist or "name" */}
+        <label>Sorted by</label>
         <select
           value={match.params.orderBy}
           onChange={(event) => selectedOption(event)}
@@ -149,8 +156,6 @@ export default function Result({ match }) {
           <option value="set">Set/Number</option>
           <option value="rarity">Rarity</option>
         </select>
-      </div>
-      <div>
         <select
           value={match.params.desc}
           onChange={(event) => selectedSortOrder(event)}
@@ -159,6 +164,7 @@ export default function Result({ match }) {
           <option value="Desc">Desc</option>
         </select>
       </div>
+      <label>Page size</label>
       <div>
         <select
           value={match.params.pageSize}
@@ -184,7 +190,7 @@ export default function Result({ match }) {
       <Pagination
         numberOfPages={numberOfPages}
         paginate={paginate}
-        pokemonName={match.params.name}
+        pokemonName={match.params.query}
         cardsPerPage={match.params.pageSize}
         orderCardsBy={match.params.orderBy}
         ascOrDesc={match.params.desc}
