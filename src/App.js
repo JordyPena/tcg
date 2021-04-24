@@ -5,24 +5,29 @@ import Results from "./components/results";
 import Summary from "./components/Summary";
 import { Route } from "react-router-dom";
 import { useState } from "react";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import Sets from "./components/Sets";
 
 function App() {
-  
   const [userInput, setUserInput] = useState("");
-  
-  console.log("userInput", userInput)
-
+  const [errorMessage, setErrorMessage] = useState(false);
   const history = useHistory();
+  const regexNumbers = /^([^0-9]*)$/;
+  const regexSpecial = /^[^*|":<>[\]{}`\\()';@&$]+$/;
 
   const formSubmit = (event) => {
     event.preventDefault();
-      history.push(`/cards/${"name:" + userInput}/1/25/rarity/Asc`)
+    if (!regexNumbers.test(userInput))
+    return setErrorMessage(true)
+    if (!regexSpecial.test(userInput))
+    return setErrorMessage(true)
+    history.push(`/cards/${"name:" + userInput}/1/25/rarity/Asc`);
   };
 
   const inputChange = (event) => {
     setUserInput(event.target.value);
+    if (event.target.value === "")
+    setErrorMessage(false)
   };
 
   const searchBar = (
@@ -37,21 +42,11 @@ function App() {
     </form>
   );
 
-  const invalidEntry = (
-    <h5 className="nav-text-red">Type a valid pokemon name in field</h5>
-  );
-
   return (
     <>
       <Route
         path="/"
-        render={(props) => (
-          <Nav
-            renderProps={props}
-            searchBar={searchBar}
-            invalidEntry={invalidEntry}
-          />
-        )}
+        render={(props) => <Nav renderProps={props} searchBar={searchBar} errorMessage={errorMessage}/>}
       />
 
       <Route exact path="/about" component={About} />
@@ -59,39 +54,23 @@ function App() {
       <Route
         exact
         path="/"
-        render={(props) => (
-          <Home
-         
-          match={props.match}
-          searchBar={searchBar}
-          />
-        )}
+        render={(props) => <Home match={props.match} searchBar={searchBar} errorMessage={errorMessage}/>}
       />
 
       <Route
         exact
         path="/cards/:query/:page/:pageSize/:orderBy/:desc"
-        render={(props) => (
-          <Results
-            match={props.match}
-          />
-        )}
+        render={(props) => <Results match={props.match}/>}
       />
 
-       {/* dynamic path names are designated with :  */}
-       <Route
-        path="/card/:name/:id"
-        component={Summary}
-      />
+      {/* dynamic path names are designated with :  */}
+      <Route path="/card/:name/:id" component={Summary} />
 
       <Route
         exact
         path="/sets"
-        render={(props) => (
-          <Sets match={props.match}/>
-        )}
+        render={(props) => <Sets match={props.match} />}
       />
-
     </>
   );
 }

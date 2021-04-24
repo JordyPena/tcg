@@ -7,7 +7,6 @@ import { useHistory } from "react-router-dom";
 export default function Result({ match }) {
   const [pokemonData, setPokemonData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [invalidSearch, setInvalidSearch] = useState(false);
   const [numberOfPages, setNumberOfPages] = useState(0);
  
   const history = useHistory();
@@ -57,7 +56,6 @@ export default function Result({ match }) {
       .then((response) => {
         setLoading(true);
         if (response.status === 400) {
-          setInvalidSearch(true);
           throw new Error("Type a valid pokemon name in field");
         }
         return response.json();
@@ -65,7 +63,6 @@ export default function Result({ match }) {
       .then((data) => {
         setNumberOfPages(Math.ceil(data.totalCount / data.pageSize));
         console.log("all data", data);
-        setInvalidSearch(false);
         setPokemonData(data.data);
         setLoading(false);
       })
