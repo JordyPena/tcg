@@ -42,8 +42,12 @@ export default function Nav({
 
       <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
         <ul className="nav-menu-items">
+          {renderProps.location.pathname === "/" ? "" : (
+
+            errorMessage === true ? <p className="errorMessage">Can only search by pokemon name ie: blastoise</p> : ""
+          )}
+     
           <li className="searchBar">
-            {errorMessage === true ? <p>Can only search by pokemon name ie: blastoise</p> : ""}
             {renderProps.location.pathname === "/" ? "" : searchBar}
           </li>
           <li className="nav-text" onClick={showSidebar}>
@@ -56,6 +60,7 @@ export default function Nav({
               Sets
             </Link>
           </li>
+        
           <li className="nav-text" onClick={showSidebar}>
             <Link to="/about">
               <BsFillInfoCircleFill /> About
