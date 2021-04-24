@@ -1,12 +1,13 @@
 import "../styling/home.css";
 import Footer from "../components/Footer";
-export default function Home({ searchBar }) {
+export default function Home({ searchBar, errorMessage }) {
   return (
     <main className="home-container">
       <div className="home-content">
         <div>
           <h1>Pokémon TCG Guru</h1>
           <h3>A project remake of the Ultimate Pokémon Card Database</h3>
+          {errorMessage === true ? <p>Can only search by pokemon name ie: blastoise</p> : ""}
           {searchBar}
           <p>Search by Pokémon name ie: "blastoise"</p>
         </div>
