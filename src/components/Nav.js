@@ -44,7 +44,7 @@ export default function Nav({
         <ul className="nav-menu-items">
           {renderProps.location.pathname === "/" ? "" : (
 
-            errorMessage === true ? <p className="errorMessage">Can only search by pokemon name ie: blastoise</p> : ""
+            errorMessage === true ? <p className="errorMessage">Can only search by Pokémon name ie: blastoise</p> : ""
           )}
      
           <li className="searchBar">

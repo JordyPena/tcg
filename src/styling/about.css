@@ -1,0 +1,22 @@
+.about-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-header {
+  margin: 1rem;
+  font-size: 20px;
+}
+
+.about-p {
+  margin: 1rem;
+  line-height: 22px;
+}
+
+.about-link {
+  font-size: 20px;
+  color: blue;
+  padding: 0;
+}
