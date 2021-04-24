@@ -8,9 +8,8 @@ import Themes from "../components/Themes";
 
 export default function Nav({
   searchBar,
-  invalidSearch,
-  invalidEntry,
   renderProps,
+  errorMessage,
 }) {
   const [sidebar, setSidebar] = useState(false);
 
@@ -44,11 +43,9 @@ export default function Nav({
       <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
         <ul className="nav-menu-items">
           <li className="searchBar">
+            {errorMessage === true ? <p>Can only search by pokemon name ie: blastoise</p> : ""}
             {renderProps.location.pathname === "/" ? "" : searchBar}
           </li>
-          {invalidSearch && (
-            <li className="nav-text-red">{invalidSearch && invalidEntry}</li>
-          )}
           <li className="nav-text" onClick={showSidebar}>
             <Link to="/">
               <AiFillHome /> Home
