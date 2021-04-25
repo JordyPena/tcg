@@ -12,10 +12,13 @@ export default function Result({ match }) {
   const history = useHistory();
 
   useEffect(() => {
-    const { name, query, page, pageSize, orderBy, desc } = match.params;
+    const { query, page, pageSize, orderBy, desc } = match.params;
 
     console.log(match.params);
+    
     let url = `https://api.pokemontcg.io/v2/cards?q=${query}&page=${page}&pageSize=${pageSize}&orderBy=${orderBy}&desc=${desc}`;
+  
+    console.log(url)
 
     let orderByText;
 
