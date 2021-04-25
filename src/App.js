@@ -15,13 +15,13 @@ function App() {
   const regexNumbers = /^([^0-9]*)$/;
   const regexSpecial = /^[^*|":<>[\]{}`\\()';@&$]+$/;
 
+ 
   const formSubmit = (event) => {
     event.preventDefault();
-    if (!regexNumbers.test(userInput))
-    return setErrorMessage(true)
-    if (!regexSpecial.test(userInput))
-    return setErrorMessage(true)
-    history.push(`/cards/${"name:" + userInput}/1/25/rarity/Asc`);
+    const encodeInput = encodeURIComponent(userInput)
+    const query = `name:"${encodeInput}*"`
+    let url = `/cards/${query}/1/25/rarity/Asc`
+    history.push(url);
   };
 
   const inputChange = (event) => {
