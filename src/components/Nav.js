@@ -4,6 +4,7 @@ import "../styling/nav.css";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose, AiFillHome } from "react-icons/ai";
 import { BsFillInfoCircleFill } from "react-icons/bs";
+import { GiCardRandom } from "react-icons/gi";
 import Themes from "../components/Themes";
 
 export default function Nav({
@@ -51,19 +52,19 @@ export default function Nav({
             {renderProps.location.pathname === "/" ? "" : searchBar}
           </li>
           <li className="nav-text" onClick={showSidebar}>
-            <Link to="/">
-              <AiFillHome /> Home
+            <Link to="/" >
+              <AiFillHome className="link-style"/> <p>Home</p>
             </Link>
           </li>
           <li className="nav-text" onClick={showSidebar}>
             <Link to="/sets">
-              Sets
+              <GiCardRandom className="link-style"/> <p>Sets</p>
             </Link>
           </li>
         
           <li className="nav-text" onClick={showSidebar}>
             <Link to="/about">
-              <BsFillInfoCircleFill /> About
+              <BsFillInfoCircleFill className="link-style"/> <p>About</p>
             </Link>
           </li>
           <li className="nav-text" onClick={showSidebar}>
