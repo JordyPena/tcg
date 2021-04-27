@@ -8,7 +8,7 @@ export default function Footer() {
     <a href="https://pokemontcg.io/" className="tcg-link">
     Pokémon TCG API
     </a>
-    <p>
+    <p className="footer-text">
       This website is not produced, endorsed, supported, or affiliated with
       Nintendo or the Pokémon Company.
     </p>
