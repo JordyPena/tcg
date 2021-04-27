@@ -15,6 +15,10 @@
   align-items: center;
 }
 
+.left-container-text {
+  padding: 4px;
+}
+
 .menu-bars {
   margin-left: 0rem;
   font-size: 2rem;
@@ -28,7 +32,7 @@
   display: flex;
   align-items: flex-start;
   position: absolute;
-  top: 100px;
+  top: 83px;
   left: -100%;
   transition: 0ms;  
   z-index: 999;
@@ -88,7 +92,7 @@
 }
 
 .nav-text a:hover {
-  color: rgb(112, 112, 112);
+  opacity: 0.1;
 }
 
 .nav-text button:hover {
@@ -105,10 +109,9 @@
 
 .menu-bars:hover {
   text-decoration: none;
-  color: black;
+  opacity: 0.1;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
   border-radius: 4px;
   cursor: pointer;
 }
@@ -159,6 +162,7 @@ a {
 }
 
 .nav-img {
-  width: 50%;
-  height: 50%;
+  width: 35%;
+  height: auto;
+  transform: scaleX(-1);
 }
