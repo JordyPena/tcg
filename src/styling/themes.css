@@ -38,7 +38,8 @@ body.theme h3,
 body.theme h4,
 body.theme h5,
 body.theme h6,
-body.theme .menu-bars {
+body.theme .menu-bars,
+body.theme .link-style {
   color: #999;
   transition: color 0.25s ease-in-out;
 }
