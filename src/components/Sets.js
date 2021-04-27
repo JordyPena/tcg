@@ -51,12 +51,14 @@ export default function Sets({ match }) {
 
   console.log("this is newSeries", newSeries);
 
-  if (loading) {
-    return <h2>Loading....</h2>;
-  }
+ 
   
   return (
+   
     <div className="sets-container">
+       {loading && (
+      <h2>Loading....</h2>
+  )}
       {newSeries.map((set, index) => {
         return (
           <div key={index} className="set-container">
