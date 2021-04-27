@@ -3,7 +3,7 @@ import Pagination from "../components/Pagination";
 import Footer from "../components/Footer";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-
+import "../styling/results.css";
 export default function Result({ match }) {
   const [pokemonData, setPokemonData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -142,11 +142,11 @@ console.log(pokemonData)
     <div className="home-container">
       {match.params.query.includes("set.id") && (
       
-     pokemonData[0] && <strong>{pokemonData[0].set.name}, ({pokemonData[0].set.id})</strong>
+     pokemonData[0] && <strong className="set-heading">{pokemonData[0].set.name}, ({pokemonData[0].set.id})</strong>
       )}
-      <div>
+      <div className="sorted">
         {/* either render value if the orderBy param exist or "name" */}
-        <label>Sorted by</label>
+        <label className="sorted-label">Sorted by</label>
         <select
           value={match.params.orderBy}
           onChange={(event) => selectedOption(event)}
@@ -164,8 +164,8 @@ console.log(pokemonData)
           <option value="Desc">Desc</option>
         </select>
       </div>
-      <label>Page size</label>
       <div>
+      <label className="size-label">Page size</label>
         <select
           value={match.params.pageSize}
           onChange={(event) => selectedPageSize(event)}
