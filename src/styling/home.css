@@ -62,3 +62,15 @@
   color: red !important;
   margin: .5rem;
 }
+
+.title-home {
+  color: white !important;
+}
+
+.footer-text {
+  line-height: 1.5rem;
+}
+
+.search-by {
+  padding-bottom: 1rem;
+}
