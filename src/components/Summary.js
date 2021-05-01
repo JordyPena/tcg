@@ -195,7 +195,7 @@ export default function Summary({ match }) {
                 {card.abilities && (
                   <div>
                     <h4>Abilities</h4>
-                    <h3>{card.abilities[0].name}</h3>
+                    <h3 className="ability-name">{card.abilities[0].name}</h3>
                     <h5>{card.abilities[0].text}</h5>
                   </div>
                 )}
@@ -258,10 +258,7 @@ export default function Summary({ match }) {
               </div>
 
               <div className="rarity">
-                {/* <div className="rarity-column">
-                  <h3>Artist</h3>
-                  <h4>{card.artist}</h4>
-                </div> */}
+               
 
                 <div className="rarity-column">
                   <h3>Rarity</h3>
@@ -281,7 +278,9 @@ export default function Summary({ match }) {
                 </div>
               </div>
 
+              <div className="flavor-container">
               <h3 className="flavor">{card.flavorText}</h3>
+              </div>
             </div>
           </div>
         </div>
