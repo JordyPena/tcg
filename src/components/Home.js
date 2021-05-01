@@ -15,7 +15,7 @@ export default function Home({ searchBar, errorMessage }) {
         <a href="http://localhost:3000/card/Blastoise/base1-2">
           <img
             src={`${process.env.PUBLIC_URL}/images/blastoise.png`}
-            className="card blastoise"
+            className="card blastoise hvr-bob"
             alt="pokemon"
           />
         </a>
@@ -23,7 +23,7 @@ export default function Home({ searchBar, errorMessage }) {
         <a href="http://localhost:3000/card/Venusaur/base1-15">
           <img
             src={`${process.env.PUBLIC_URL}/images/venusaur.png`}
-            className="card venusaur"
+            className="card venusaur hvr-bob"
             alt="pokemon"
           />
         </a>
@@ -31,7 +31,7 @@ export default function Home({ searchBar, errorMessage }) {
         <a href="http://localhost:3000/card/Charizard/base6-3">
           <img
             src={`${process.env.PUBLIC_URL}/images/charizard.png`}
-            className="card charizard"
+            className="card charizard hvr-bob"
             alt="pokemon"
           />
         </a>
