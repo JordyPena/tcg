@@ -7,6 +7,7 @@
   align-items: stretch;
   width: 100%;
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+  justify-content: space-between;
 }
 
 .left-container {
@@ -16,13 +17,18 @@
 }
 
 .left-container-text {
+  color: white !important;
   padding: 4px;
+  font-weight: bold;
 }
 
 .menu-bars {
+  display: flex;
+  align-items: center;
   margin-left: 0rem;
   font-size: 2rem;
   background: none;
+  padding-right: 15px;
 }
 
 .nav-menu {
@@ -155,14 +161,72 @@ a {
 }
 
 a {
-  padding: 10px 25px;
   background: transparent;
   outline: none;
   cursor: pointer;
 }
 
 .nav-img {
-  width: 35%;
+  width: 77px;
   height: auto;
   transform: scaleX(-1);
+}
+
+.price-column > h5 {
+  font-size: 11px;
+}
+
+@media only screen and (min-width: 410px) {
+
+  .left-container-text {
+    padding: 10px;
+    color: white;
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .nav-menu.active {
+    top: 76px;
+    height: 40vh;
+  }
+
+ .prices-header {
+   padding-left: 0 !important;
+ }
+
+ .buy {
+   padding: 0;
+   padding-left: 0 !important;
+ }
+
+ .updated-header {
+   padding: 0;
+   padding-left: 0 !important;
+ }
+
+ .price-row {
+   padding-left: 0 !important;
+   width: auto !important;
+   justify-content: space-between;
+ }
+
+ .price-top {
+   margin: 5px;
+ }
+
+ .price-column {
+   margin: 5px;
+ }
+
+ .ability-name {
+   display: flex;
+   justify-content: center;
+ }
+ 
+ .attacks-width {
+   width: 100%;
+ }
 }
