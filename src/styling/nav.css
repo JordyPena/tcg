@@ -166,15 +166,62 @@ a {
 }
 
 .nav-img {
-  width: 35%;
+  width: 77px;
   height: auto;
   transform: scaleX(-1);
 }
 
-@media only screen and (min-width: 720px) {
+@media only screen and (min-width: 410px) {
 
   .left-container-text {
     padding: 10px;
     color: white;
   }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .nav-menu.active {
+    top: 76px;
+    height: 40vh;
+  }
+
+ .prices-header {
+   padding-left: 0 !important;
+ }
+
+ .buy {
+   padding: 0;
+   padding-left: 0 !important;
+ }
+
+ .updated-header {
+   padding: 0;
+   padding-left: 0 !important;
+ }
+
+ .price-row {
+   padding-left: 0 !important;
+   width: auto !important;
+   justify-content: space-between;
+ }
+
+ .price-top {
+   margin: 5px;
+ }
+
+ .price-column {
+   margin: 5px;
+ }
+ 
+ .ability {
+   width: 100% !important;
+ }
+
+ .ability-name {
+   display: flex;
+   justify-content: center;
+ }
 }

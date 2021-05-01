@@ -170,3 +170,8 @@
 .buy-color {
   color: blue !important;
 }
+
+.flavor-container {
+  display: flex;
+  justify-content: center;
+}
