@@ -2,33 +2,36 @@ import "../styling/summary.css";
 import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
 export default function Summary({ match }) {
+  
   const [card, setCard] = useState({});
   const [loading, setLoading] = useState(false);
   console.log(card);
 
   useEffect(() => {
-    const { id } = match.params;
-    console.log("ID", id);
+
+    const { id } = match.params
+    console.log("ID", id)
     fetch(`https://api.pokemontcg.io/v2/cards/${id}`)
       .then((response) => {
         setLoading(true);
         if (response.status === 400) {
+          
           throw new Error("Type a valid pokemon name in field");
         }
         return response.json();
       })
       .then((data) => {
-        console.log("this is data", data);
+        console.log("this is data", data)
         setCard(data.data);
         setLoading(false);
       })
       .catch((error) => {
         console.error({ error });
       });
-  }, [match]);
+  }, [match])
 
   if (loading) {
-    return <h2>Loading....</h2>;
+    return <h2>Loading....</h2>
   }
 
   return (
@@ -191,32 +194,34 @@ export default function Summary({ match }) {
               <div className="ability">
                 {card.abilities && (
                   <div>
-                    <h4>ABILITIES</h4>
-                    <h3 className="ability-name">{card.abilities[0].name}</h3>
-                    <p>{card.abilities[0].text}</p>
+                    <h4>Abilities</h4>
+                    <h3>{card.abilities[0].name}</h3>
+                    <h5>{card.abilities[0].text}</h5>
                   </div>
                 )}
               </div>
 
               <div className="attacks">
                 {card.attacks && (
-                  <div className="attacks-width">
-                    <h4>ATTACKS</h4>
-                    <h3 className="ability-name">
+                  <div>
+                    <h4>Attacks</h4>
+                    <h3>
                       {card.attacks[0].name + " " + card.attacks[0].damage}
                     </h3>
-                    <p>{card.attacks[0].text}</p>
+                    <h5>{card.attacks[0].text}</h5>
 
                     {card.attacks[1] && (
-                      <div>
-                        <h3 className="ability-name">
-                          {card.attacks[1].name + " " + card.attacks[1].damage}
-                        </h3>
-                        <p>{card.attacks[1].text}</p>
-                      </div>
-                    )}
+                  <div>
+                    <h3>
+                      {card.attacks[1].name + " " + card.attacks[1].damage}
+                    </h3>
+                    <h5>{card.attacks[1].text}</h5>
                   </div>
                 )}
+                  </div>
+                )}
+
+               
               </div>
 
               <div className="weakness">
@@ -253,6 +258,11 @@ export default function Summary({ match }) {
               </div>
 
               <div className="rarity">
+                {/* <div className="rarity-column">
+                  <h3>Artist</h3>
+                  <h4>{card.artist}</h4>
+                </div> */}
+
                 <div className="rarity-column">
                   <h3>Rarity</h3>
                   <h4>{card.rarity}</h4>
@@ -271,14 +281,12 @@ export default function Summary({ match }) {
                 </div>
               </div>
 
-              <div className="flavor-container">
-                <h3 className="flavor">{card.flavorText}</h3>
-              </div>
+              <h3 className="flavor">{card.flavorText}</h3>
             </div>
           </div>
         </div>
       )}
-      <Footer />
+      <Footer/>
     </>
   );
 }

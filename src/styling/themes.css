@@ -24,6 +24,7 @@
 
 body.theme,
 body.theme .navbar,
+body.theme .nav-menu.active,
 body.theme .home-footer {
   background-color: #1a1919;
   color: #999;
