@@ -61,14 +61,15 @@ export default function Sets({ match }) {
   )}
       {newSeries.map((set, index) => {
         return (
-          <div key={index} className="set-container">
-             <p className="set-title">{set.series}</p>
-             
-            {set.sets.map((eachSet, index) => {
-              return (
-                <Set eachSet={eachSet} key={index} match={match}/>
-              );
-            })}
+          <div key={index} >
+             <h1 className="set-title">{set.series}</h1>
+            <div className="set-container">
+              {set.sets.map((eachSet, index) => {
+                return (
+                  <Set eachSet={eachSet} key={index} match={match}/>
+                );
+              })}
+            </div>
           </div>
         );
       })}

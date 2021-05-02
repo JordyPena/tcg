@@ -21,14 +21,13 @@
   margin: 10px;
   border-radius: 5px;
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+  vertical-align: middle;
+  transition-duration: .3s;
+  transition-property: transform;
 }
 
 .set-content:hover {
  transform: scale(1.1);
- vertical-align: middle;
- transition-duration: .3s;
- transition-property: transform;
- margin: 20px;
 }
 
 .set-middle {
@@ -94,4 +93,27 @@
   font-size: 2rem;
   font-weight: 600;
   line-height: 1.125;
+}
+
+@media only screen and (min-width: 1024px) {
+ .set-title {
+   display: flex;
+   justify-content: center;
+ }
+
+ .set-container {
+  flex-direction: row;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.set-content {
+  width: auto;
+  height: auto;
+  vertical-align: middle;
+  transition-duration: .3s;
+  transition-property: transform;
+  flex: 0 1 300px;
+  justify-content: stretch;
+}
 }

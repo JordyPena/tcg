@@ -13,6 +13,7 @@
 .column {
   display: flex;
   flex-direction: column;
+  padding: 0 20px;
 }
 
 .summary-card {
@@ -62,6 +63,8 @@
   display: flex;
   flex-direction: column;
   margin: 5px;
+  flex: 1;
+  justify-content: space-between;
 }
 
 .price-top {
@@ -74,18 +77,17 @@
 .price-row {
   display: flex;
   flex-direction: row;
-  padding-left: 10px;
-  width: 70%;
+  width: 100%;
   font-size: 15px;
 }
 
 .prices-header {
-  padding-left: 20px;
+  
   margin: 0;
 }
 
 .updated-header {
-  padding-left: 20px;
+  
   margin: 0;
 }
 
@@ -94,27 +96,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 80%;
-  padding-left: 20px;
-}
-
-.weakness {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-
-.weakness-column {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  width: 100%;
 }
 
 .weakness-row {
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
+
+.weakness-content {
+  flex: 1 0 100px;
+  margin: 0 5px;
+}
+
 
 .rarity {
   display: flex;
@@ -123,7 +118,7 @@
 }
 
 .rarity-column {
-  padding-left: 50px;
+  flex: 1;
 }
 
 .set-img {
@@ -138,25 +133,25 @@
 }
 
 .purple {
-  color: purple !important;
+  color: #824c95 !important;
   font-size: 15px;
   margin: 0;
 }
 
 .green {
-  color: green !important;
+  color: #48c774 !important;
   font-size: 15px;
   margin: 0;
 }
 
 .blue {
-  color: blue !important;
+  color: #3273dc !important;
   font-size: 15px;
   margin: 0;
 }
 
 .red {
-  color: red !important;
+  color: #f14668 !important;
   font-size: 15px;
   margin: 0;
 }
@@ -164,9 +159,76 @@
 .buy {
   font-weight: bolder;
   text-decoration: none;
-  padding-left: 20px;
+ 
 }
 
 .buy-color {
-  color: blue !important;
+  color: #3273dc !important;
+  margin: 0;
+}
+
+.flavor-container {
+  display: flex;
+  justify-content: center;
+}
+
+.attacks-space {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media only screen and (min-width: 750px) {
+  .summary-container {
+    margin-top: 0px;
+    flex-direction: row;
+  }
+
+  .summary-card {
+    width: auto;
+    height: 330px;
+    padding: 40px 100px 0 40px;
+    box-shadow: none;
+  }
+
+  .row {
+    flex-direction: row;
+    align-items: normal;
+  }
+
+  .title {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .ability-width {
+    width: 100%;
+  }
+
+  .flavor {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .cardName {
+    width: 100%;
+    margin: 0;
+  }
+
+  .weakness-content {
+    flex: 1 0 25%;
+  }
+
+  .weakness-content p {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 1120px) {
+  .summary-card {
+    width: auto;
+    height: 500px;
+    padding: 40px 100px 0 40px;
+    box-shadow: none;
+  }
 }
