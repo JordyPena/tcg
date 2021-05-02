@@ -17,7 +17,7 @@
 }
 
 .left-container-text {
-  color: white !important;
+  color: #0a0a0a !important;
   padding: 4px;
   font-weight: bold;
 }
@@ -229,4 +229,46 @@ a {
  .attacks-width {
    width: 100%;
  }
+}
+
+@media only screen and (min-width: 1024px) {
+
+  .menu-bars {
+    display: none;
+  }
+
+  .nav-menu {
+    display: contents;
+  }
+
+  .nav-menu-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 100px;
+    margin-top: -70px;
+  }
+
+  .nav-menu-items li {
+    font-size: 20px;
+    align-items: center;
+    padding-right: 5px;
+  }
+
+  .searchBar {
+    padding-top: 10px;
+    padding-right: 25% !important;
+  }
+
+  .nav-text {
+    padding: 0;
+  }
+
+}
+
+@media only screen and (min-width: 1025px){
+  .nav-menu-items {
+    justify-content: space-evenly;
+    padding-left: 17%;
+  }
 }

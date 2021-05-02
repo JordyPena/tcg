@@ -97,3 +97,22 @@
 .search-by {
   padding-bottom: 1rem;
 }
+
+@media only screen and (min-width: 1024px) {
+  .home-footer {
+    margin-top: 210px;
+  }
+
+  .blastoise, .venusaur {
+    bottom: -340px;
+  }
+
+  .charizard {
+    bottom: -370px;
+  }
+
+  .footer-position {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+}

@@ -23,8 +23,7 @@
 }
 
 body.theme,
-body.theme .navbar,
-body.theme .home-footer {
+body.theme .navbar {
   background-color: #1a1919;
   color: #999;
   transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
@@ -36,9 +35,7 @@ body.theme h2,
 body.theme h3,
 body.theme h4,
 body.theme h5,
-body.theme h6,
-body.theme .menu-bars,
-body.theme .link-style {
+body.theme h6 {
   color: #999;
   transition: color 0.25s ease-in-out;
 }
@@ -64,4 +61,35 @@ body.theme .sets-container {
 body.theme .navbar,
 body.theme .nav-menu.active {
   background-color: #161b22;
+}
+
+body.theme .left-container-text {
+  color:  white !important;
+}
+
+body.theme .summary-container {
+  background-color: #161b22 !important;
+}
+
+body.theme .column p, .column h3, .column h1, .column h4, .column h6, .dark-mode-style {
+  color: #c9d1d9 !important;
+}
+
+body.theme .footer-text, body.theme .menu-bars {
+  color: #c9d1d9 !important;
+}
+
+body.theme .link-style {
+  color: #c9d1d9 !important;
+}
+
+body.theme,
+body.theme .home-footer {
+  background-color: #1a202c;
+}
+
+@media only screen and (min-width: 1024px) {
+  .light-mode {
+    display: flex;
+  }
 }
