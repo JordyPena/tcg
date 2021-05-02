@@ -177,7 +177,7 @@ console.log(pokemonData)
           <option value="25">25</option>
         </select>
       </div>
-      <div>
+      <div className="wrap-results">
         {Boolean(Object.keys(pokemonData.length)) && (
           <>
             {pokemonData.map((card, index) => {

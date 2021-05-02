@@ -4,7 +4,7 @@ import "../styling/home.css"
 export default function Footer() {
   return (
     <div className="footer-position">
-    <p>All data made available by the</p>
+    <p  className="footer-text">All data made available by the</p>
     <a href="https://pokemontcg.io/" className="tcg-link">
     Pokémon TCG API
     </a>

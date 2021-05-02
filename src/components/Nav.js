@@ -53,18 +53,18 @@ export default function Nav({
           </li>
           <li className="nav-text" onClick={showSidebar}>
             <Link to="/" >
-              <AiFillHome className="link-style"/> <p>Home</p>
+              <AiFillHome className="link-style"/> <p className="dark-mode-style">Home</p>
             </Link>
           </li>
           <li className="nav-text" onClick={showSidebar}>
             <Link to="/sets">
-              <GiCardRandom className="link-style"/> <p>Sets</p>
+              <GiCardRandom className="link-style"/> <p className="dark-mode-style">Sets</p>
             </Link>
           </li>
         
           <li className="nav-text" onClick={showSidebar}>
             <Link to="/about">
-              <BsFillInfoCircleFill className="link-style"/> <p>About</p>
+              <BsFillInfoCircleFill className="link-style"/> <p className="dark-mode-style">About</p>
             </Link>
           </li>
           <li className="nav-text" onClick={showSidebar}>
