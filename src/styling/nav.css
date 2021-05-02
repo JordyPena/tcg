@@ -245,30 +245,18 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     margin-top: -70px;
+    padding-left: 250px;
+    align-items: center;
   }
 
   .nav-menu-items li {
     font-size: 20px;
     align-items: center;
-    padding-right: 5px;
-  }
-
-  .searchBar {
-    padding-top: 10px;
-    padding-right: 25% !important;
-  }
-
-  .nav-text {
-    padding: 0;
+    padding: 10px;
+    justify-content: flex-end;
   }
 
 }
 
-@media only screen and (min-width: 1025px){
-  .nav-menu-items {
-    justify-content: space-evenly;
-    padding-left: 17%;
-  }
-}

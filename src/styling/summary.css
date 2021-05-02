@@ -178,55 +178,9 @@
   justify-content: space-between;
 }
 
-/* @media only screen and (min-width: 320px) {
+@media only screen and (min-width: 750px) {
   .summary-container {
-    margin-top: -50px;
-    flex-direction: row;
-  }
-
-  .summary-card {
-    width: auto;
-    height: 342px;
-    padding: 40px 100px 0 40px;
-    box-shadow: none;
-  }
-
-  .row {
-    flex-direction: row;
-    align-items: normal;
-  }
-
-  .title {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .ability-width {
-    width: 100%;
-  }
-
-  .flavor {
-    width: 100%;
-    padding-left: 0;
-  }
-
-  .cardName {
-    width: 100%;
-    margin: 0;
-  }
-
-  .weakness-content {
-    flex: 1 0 25%;
-  }
-
-  .weakness-content p {
-    font-size: 20px;
-  }
-} */
-
-@media only screen and (min-width: 700px) {
-  .summary-container {
-    margin-top: -50px;
+    margin-top: 0px;
     flex-direction: row;
   }
 
@@ -267,5 +221,14 @@
 
   .weakness-content p {
     font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 1120px) {
+  .summary-card {
+    width: auto;
+    height: 500px;
+    padding: 40px 100px 0 40px;
+    box-shadow: none;
   }
 }

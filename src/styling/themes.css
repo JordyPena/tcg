@@ -24,7 +24,7 @@
 
 body.theme,
 body.theme .navbar {
-  background-color: #1a1919;
+  background-color: #1a1919 !important;
   color: #999;
   transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
@@ -60,15 +60,16 @@ body.theme .sets-container {
 
 body.theme .navbar,
 body.theme .nav-menu.active {
-  background-color: #161b22;
+  background-color: #1a202c;
 }
 
 body.theme .left-container-text {
   color:  white !important;
 }
 
-body.theme .summary-container {
-  background-color: #161b22 !important;
+body.theme .summary-container,
+body.theme .home-container {
+  background-color: #1a202c !important;
 }
 
 body.theme .column p, .column h3, .column h1, .column h4, .column h6, .dark-mode-style {
@@ -83,7 +84,6 @@ body.theme .link-style {
   color: #c9d1d9 !important;
 }
 
-body.theme,
 body.theme .home-footer {
   background-color: #1a202c;
 }
