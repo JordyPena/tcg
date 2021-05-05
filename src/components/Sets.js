@@ -4,14 +4,14 @@ import Set from "../components/Set";
 import Footer from "../components/Footer";
 export default function Sets({ match }) {
   const [setsData, setSetsData] = useState([]);
-  const [ loading, setLoading ] = useState(false);
+  const [loading, setLoading] = useState(false);
   // const [seriesData, setSeriesData] = useState({});
   let url = `https://api.pokemontcg.io/v2/sets?orderBy=set,-releaseDate`;
 
   useEffect(() => {
     fetch(url)
       .then((response) => {
-        setLoading(true)
+        setLoading(true);
         if (response.status === 400) throw new Error("Error getting data");
         return response.json();
       })
@@ -35,8 +35,6 @@ export default function Sets({ match }) {
   let newSeries = [];
 
   for (const x of setsData) {
-    console.log("this is x", x);
-    console.log("this is x.series", x.series);
     // looking for a double negative
     // ! means not
     // find((s) => s.series === x.series) finds the match returning true
@@ -49,31 +47,22 @@ export default function Sets({ match }) {
     }
   }
 
-  console.log("this is newSeries", newSeries);
-
- 
-  
   return (
-   
     <div className="sets-container">
-       {loading && (
-      <h2>Loading....</h2>
-  )}
+      {loading && <h2>Loading....</h2>}
       {newSeries.map((set, index) => {
         return (
-          <div key={index} >
-             <h1 className="set-title">{set.series}</h1>
+          <div key={index}>
+            <h1 className="set-title">{set.series}</h1>
             <div className="set-container">
               {set.sets.map((eachSet, index) => {
-                return (
-                  <Set eachSet={eachSet} key={index} match={match}/>
-                );
+                return <Set eachSet={eachSet} key={index} match={match} />;
               })}
             </div>
           </div>
         );
       })}
-      <Footer/>
+      <Footer />
     </div>
   );
 }

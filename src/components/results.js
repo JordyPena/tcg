@@ -13,11 +13,7 @@ export default function Result({ match }) {
   useEffect(() => {
     const { query, page, pageSize, orderBy, desc } = match.params;
 
-    console.log(match.params);
-
     let url = `https://api.pokemontcg.io/v2/cards?q=${query}&page=${page}&pageSize=${pageSize}&orderBy=${orderBy}&desc=${desc}`;
-
-    console.log(url);
 
     let orderByText;
 
@@ -76,16 +72,10 @@ export default function Result({ match }) {
     return <h2>Loading....</h2>;
   }
 
-  const paginate = (
-    pageNumber,
-    pokemonName,
-    cardsPerPage,
-    orderCardsBy,
-    ascOrDesc,
-  ) => {
+  const paginate = (pageNumber) => {
     window.scrollTo(0, 0);
     history.push(
-      `/cards/${pokemonName}/${pageNumber}/${cardsPerPage}/${orderCardsBy}/${ascOrDesc}`
+      `/cards/${match.params.query}/${pageNumber}/${match.params.pageSize}/${match.params.orderBy}/${match.params.desc}`
     );
   };
 
@@ -188,10 +178,6 @@ export default function Result({ match }) {
       <Pagination
         numberOfPages={numberOfPages}
         paginate={paginate}
-        pokemonName={match.params.query}
-        cardsPerPage={match.params.pageSize}
-        orderCardsBy={match.params.orderBy}
-        ascOrDesc={match.params.desc}
         match={match}
       />
       <Footer />

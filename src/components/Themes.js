@@ -4,9 +4,9 @@ import { BsMoon } from "react-icons/bs";
 import { BsSun } from "react-icons/bs";
 
 export default function Themes() {
- 
-  const [ theme, setTheme ] = useState(localStorage.getItem("theme") || "light-mode");
-
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") || "light-mode"
+  );
 
   useEffect(() => {
     const bodyElement = document.body;
@@ -15,18 +15,16 @@ export default function Themes() {
   }, [theme]);
 
   const handleThemeButton = () => {
-    console.log(theme)
     setTheme((prevTheme) => {
-      let newTheme = "dark-mode"
+      let newTheme = "dark-mode";
 
-      if (prevTheme === newTheme)
-        newTheme = "light-mode"
+      if (prevTheme === newTheme) newTheme = "light-mode";
 
-      localStorage.setItem("theme", newTheme)
+      localStorage.setItem("theme", newTheme);
 
-      return newTheme
-    })
-  }
+      return newTheme;
+    });
+  };
 
   return (
     <div className={theme === "dark-mode" ? "dark-mode" : "light-mode"}>

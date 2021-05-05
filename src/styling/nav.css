@@ -6,7 +6,8 @@
   min-height: 3.25rem;
   align-items: stretch;
   width: 100%;
-  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
+    0 0 0 1px rgb(10 10 10 / 2%);
   justify-content: space-between;
 }
 
@@ -38,7 +39,7 @@
   position: absolute;
   top: 83px;
   left: -100%;
-  transition: 0ms;  
+  transition: 0ms;
   z-index: 999;
 }
 
@@ -164,7 +165,6 @@ a {
 }
 
 @media only screen and (min-width: 410px) {
-
   .left-container-text {
     padding: 10px;
     color: white;
@@ -180,46 +180,45 @@ a {
     height: 40vh;
   }
 
- .prices-header {
-   padding-left: 0 !important;
- }
+  .prices-header {
+    padding-left: 0 !important;
+  }
 
- .buy {
-   padding: 0;
-   padding-left: 0 !important;
- }
+  .buy {
+    padding: 0;
+    padding-left: 0 !important;
+  }
 
- .updated-header {
-   padding: 0;
-   padding-left: 0 !important;
- }
+  .updated-header {
+    padding: 0;
+    padding-left: 0 !important;
+  }
 
- .price-row {
-   padding-left: 0 !important;
-   width: auto !important;
-   justify-content: space-between;
- }
+  .price-row {
+    padding-left: 0 !important;
+    width: auto !important;
+    justify-content: space-between;
+  }
 
- .price-top {
-   margin: 5px;
- }
+  .price-top {
+    margin: 5px;
+  }
 
- .price-column {
-   margin: 5px;
- }
+  .price-column {
+    margin: 5px;
+  }
 
- .ability-name {
-   display: flex;
-   justify-content: center;
- }
- 
- .attacks-width {
-   width: 100%;
- }
+  .ability-name {
+    display: flex;
+    justify-content: center;
+  }
+
+  .attacks-width {
+    width: 100%;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
-
   .menu-bars {
     display: none;
   }
@@ -244,6 +243,4 @@ a {
     padding: 10px;
     justify-content: flex-end;
   }
-
 }
-
