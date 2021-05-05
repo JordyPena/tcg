@@ -38,6 +38,7 @@ function App() {
         value={userInput}
         onChange={(event) => inputChange(event)}
         placeholder="Search for a card"
+        className="search-style"
       />
     </form>
   );

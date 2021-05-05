@@ -8,17 +8,16 @@ export default function Result({ match }) {
   const [pokemonData, setPokemonData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [numberOfPages, setNumberOfPages] = useState(0);
- 
   const history = useHistory();
 
   useEffect(() => {
     const { query, page, pageSize, orderBy, desc } = match.params;
 
     console.log(match.params);
-    
+
     let url = `https://api.pokemontcg.io/v2/cards?q=${query}&page=${page}&pageSize=${pageSize}&orderBy=${orderBy}&desc=${desc}`;
-  
-    console.log(url)
+
+    console.log(url);
 
     let orderByText;
 
@@ -65,7 +64,6 @@ export default function Result({ match }) {
       })
       .then((data) => {
         setNumberOfPages(Math.ceil(data.totalCount / data.pageSize));
-        console.log("all data", data);
         setPokemonData(data.data);
         setLoading(false);
       })
@@ -83,7 +81,7 @@ export default function Result({ match }) {
     pokemonName,
     cardsPerPage,
     orderCardsBy,
-    ascOrDesc
+    ascOrDesc,
   ) => {
     window.scrollTo(0, 0);
     history.push(
@@ -113,14 +111,12 @@ export default function Result({ match }) {
         history.push(url);
       } else url += "/Asc";
       history.push(url);
-    } 
-    
-    else if (match.params.page === "1"){
+    } else if (match.params.page === "1") {
       let url = `/cards/${match.params.query}/${match.params.page}/${match.params.pageSize}/${match.params.orderBy}`;
       if (event.target.value === "Desc") {
-        url +="/Desc"
-        history.push(url)
-      } else url += "/Asc"
+        url += "/Desc";
+        history.push(url);
+      } else url += "/Asc";
       history.push(url);
     }
   };
@@ -136,13 +132,12 @@ export default function Result({ match }) {
     }
   };
 
-console.log(pokemonData)
-
   return (
     <div className="home-container">
-      {match.params.query.includes("set.id") && (
-      
-     pokemonData[0] && <strong className="set-heading">{pokemonData[0].set.name}, ({pokemonData[0].set.id})</strong>
+      {match.params.query.includes("set.id") && pokemonData[0] && (
+        <strong className="set-heading">
+          {pokemonData[0].set.name}, ({pokemonData[0].set.id})
+        </strong>
       )}
       <div className="sorted">
         {/* either render value if the orderBy param exist or "name" */}
@@ -150,6 +145,7 @@ console.log(pokemonData)
         <select
           value={match.params.orderBy}
           onChange={(event) => selectedOption(event)}
+          className="drop-style"
         >
           <option value="name">Name</option>
           <option value="released">Release Date</option>
@@ -159,16 +155,18 @@ console.log(pokemonData)
         <select
           value={match.params.desc}
           onChange={(event) => selectedSortOrder(event)}
+          className="drop-style"
         >
           <option value="Asc">Asc</option>
           <option value="Desc">Desc</option>
         </select>
       </div>
       <div>
-      <label className="size-label">Page size</label>
+        <label className="size-label">Page size</label>
         <select
           value={match.params.pageSize}
           onChange={(event) => selectedPageSize(event)}
+          className="drop-page-style"
         >
           <option value="5">5</option>
           <option value="10">10</option>
@@ -194,6 +192,7 @@ console.log(pokemonData)
         cardsPerPage={match.params.pageSize}
         orderCardsBy={match.params.orderBy}
         ascOrDesc={match.params.desc}
+        match={match}
       />
       <Footer />
     </div>
