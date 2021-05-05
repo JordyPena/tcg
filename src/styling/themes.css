@@ -6,7 +6,6 @@
 }
 
 .light-mode {
-  background-color: #fff;
   color: #333;
   height: 100%;
   transition: background-color 0.25s ease-in-out;
@@ -36,7 +35,7 @@ body.theme h3,
 body.theme h4,
 body.theme h5,
 body.theme h6 {
-  color: #999;
+  color: #c9d1d9;
   transition: color 0.25s ease-in-out;
 }
 
@@ -70,14 +69,6 @@ body.theme .left-container-text {
 body.theme .summary-container,
 body.theme .home-container {
   background-color: #1a202c !important;
-}
-
-body.theme .column p,
-.column h3,
-.column h1,
-.column h4,
-.column h6 {
-  color: #c9d1d9 !important;
 }
 
 body.theme .footer-text,

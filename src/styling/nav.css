@@ -46,6 +46,7 @@
 .nav-menu.active {
   left: 0;
   transition: 0ms;
+  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
 }
 
 .nav-text {
@@ -103,7 +104,7 @@
   background-color: rgb(204, 204, 204);
   border-radius: 4px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 
