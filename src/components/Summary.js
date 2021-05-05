@@ -4,11 +4,10 @@ import { useEffect, useState } from "react";
 export default function Summary({ match }) {
   const [card, setCard] = useState({});
   const [loading, setLoading] = useState(false);
-  console.log(card);
 
   useEffect(() => {
     const { id } = match.params;
-    console.log("ID", id);
+
     fetch(`https://api.pokemontcg.io/v2/cards/${id}`)
       .then((response) => {
         setLoading(true);
@@ -18,7 +17,6 @@ export default function Summary({ match }) {
         return response.json();
       })
       .then((data) => {
-        console.log("this is data", data);
         setCard(data.data);
         setLoading(false);
       })
@@ -212,24 +210,22 @@ export default function Summary({ match }) {
                 {card.attacks && (
                   <div className="attacks-width">
                     <h4>ATTACKS</h4>
-                   
-                      <div className="attacks-space">
-                      <h3 className="ability-name">
-                      {card.attacks[0].name}
-                      </h3>
+
+                    <div className="attacks-space">
+                      <h3 className="ability-name">{card.attacks[0].name}</h3>
                       <span>{card.attacks[0].damage}</span>
-                      </div>
-                   
+                    </div>
+
                     <p>{card.attacks[0].text}</p>
 
                     {card.attacks[1] && (
                       <>
-                      <div className="attacks-space">
-                        <h3 className="ability-name">
-                          {card.attacks[1].name}
-                        </h3>
-                        <span>{card.attacks[1].damage}</span>
-                      </div>
+                        <div className="attacks-space">
+                          <h3 className="ability-name">
+                            {card.attacks[1].name}
+                          </h3>
+                          <span>{card.attacks[1].damage}</span>
+                        </div>
                         <p>{card.attacks[1].text}</p>
                       </>
                     )}
@@ -237,43 +233,41 @@ export default function Summary({ match }) {
                 )}
               </div>
 
-             
-                <div className="weakness-row">
-                  <div className="weakness-content">
-                    <h4>Weakness</h4>
-                    <p>{card.weaknesses[0].type + card.weaknesses[0].value}</p>
-                  </div>
-                  <div className="weakness-content">
-                    {card.resistances ? (
-                      <div className="weakness-content">
-                        <h4>Resistance</h4>
-                        <p>
-                          {card.resistances[0].type + card.resistances[0].value}
-                        </p>
-                      </div>
-                    ) : (
-                      <div className="weakness-content">
-                        <h4>Resistance</h4> <p>N/A</p>
-                      </div>
-                    )}
-                  </div>
-                  <div className="weakness-content">
-                    <h4>Retreat Cost</h4>
-                    <p>colorless</p>
-                  </div>
-                  
+              <div className="weakness-row">
+                <div className="weakness-content">
+                  <h4>Weakness</h4>
+                  <p>{card.weaknesses[0].type + card.weaknesses[0].value}</p>
+                </div>
+                <div className="weakness-content">
+                  {card.resistances ? (
                     <div className="weakness-content">
-                      <h4>Artist</h4>
-                      <p>{card.artist}</p>
+                      <h4>Resistance</h4>
+                      <p>
+                        {card.resistances[0].type + card.resistances[0].value}
+                      </p>
                     </div>
-
+                  ) : (
                     <div className="weakness-content">
-
-                    <h4>Rarity</h4>
-                    <p>{card.rarity}</p>
+                      <h4>Resistance</h4> <p>N/A</p>
                     </div>
-                  
-                  <div className="weakness-content">
+                  )}
+                </div>
+                <div className="weakness-content">
+                  <h4>Retreat Cost</h4>
+                  <p>colorless</p>
+                </div>
+
+                <div className="weakness-content">
+                  <h4>Artist</h4>
+                  <p>{card.artist}</p>
+                </div>
+
+                <div className="weakness-content">
+                  <h4>Rarity</h4>
+                  <p>{card.rarity}</p>
+                </div>
+
+                <div className="weakness-content">
                   <h4>Set</h4>
                   <p>{card.set.name}</p>
                   {
@@ -283,11 +277,8 @@ export default function Summary({ match }) {
                       className="set-img"
                     />
                   }
-                  </div>
                 </div>
-             
-
-              
+              </div>
 
               <div className="flavor-container">
                 <p className="flavor">{card.flavorText}</p>

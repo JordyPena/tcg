@@ -6,11 +6,9 @@ export default function Card({ card }) {
     <>
       <div className="card-container">
         <Link to={`/card/${card.name}/${card.id}`}>
-          <img src={card.images.small} alt="pokemon" className="card-image"/>
+          <img src={card.images.small} alt="pokemon" className="card-image" />
         </Link>
       </div>
     </>
   );
 }
-
-

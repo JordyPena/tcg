@@ -6,10 +6,10 @@
 }
 
 .card-image:hover {
-    transform: translateY(-10px);
-    box-shadow: 2px 15px 10px 5px rgba(0, 0, 0, 0.5);
-    transition-duration: .3s;
-    transition-property: transform, box-shadow;
+  transform: translateY(-10px);
+  box-shadow: 2px 15px 10px 5px rgba(0, 0, 0, 0.5);
+  transition-duration: 0.3s;
+  transition-property: transform, box-shadow;
 }
 
 .card-image {

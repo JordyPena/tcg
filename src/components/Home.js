@@ -5,10 +5,18 @@ export default function Home({ searchBar, errorMessage }) {
   return (
     <main className="home-container">
       <div className="home-content">
-          {errorMessage === true ? <p className="errorMessage">Can only search by Pokémon name ie: blastoise</p> : ""}
+        {errorMessage === true ? (
+          <p className="errorMessage">
+            Can only search by Pokémon name ie: blastoise
+          </p>
+        ) : (
+          ""
+        )}
         <div>
           <h1 className="title-home">Pokémon TCG Guru</h1>
-          <p className="explain-title">A project remake of the Ultimate Pokémon Card Database</p>
+          <p className="explain-title">
+            A project remake of the Ultimate Pokémon Card Database
+          </p>
           {searchBar}
           <p className="search-by">Search by Pokémon name ie: "blastoise"</p>
         </div>
